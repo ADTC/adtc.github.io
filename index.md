@@ -1,6 +1,6 @@
 ## Hey there!
 
-![How you doin?](https://media.giphy.com/media/11SIBu3s72Co8w/giphy.gif)
+![How you doin?](https://i.giphy.com/11SIBu3s72Co8w.gif)
 
 I don't see anything here at the moment.
 
