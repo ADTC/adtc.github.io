@@ -6,7 +6,7 @@
 
 My favorite is `git l`. Oh, and `git al` is the mother of all aliases.
 
-```
+```conf
 [alias]
 	alias   = config --get-regexp alias
 	al      = alias
@@ -14,13 +14,14 @@ My favorite is `git l`. Oh, and `git al` is the mother of all aliases.
 	aa      = add --all
 	b       = branch
 	bd      = branch --delete
-	bdf     = branch --delete --force
+	bdf     = branch --force --delete
 	bf      = branch --force
 	bm      = branch --move
 	br      = branch --remote
 	bt      = branch --track
 	c       = commit
 	ca      = commit --amend
+	cax     = commit --amend --no-edit
 	cb      = checkout -b
 	cdate   = !echo cmd /v /c \\\"set GIT_COMMITTER_DATE=\\&\\& git ca\\\" && git log -n 1 --format=%aD
 	ce      = config --global --edit
@@ -31,9 +32,10 @@ My favorite is `git l`. Oh, and `git al` is the mother of all aliases.
 	cpc     = cherry-pick --continue
 	d       = diff
 	ds      = diff --staged
+	dt      = difftool --no-prompt --dir-diff --no-symlinks
 	f       = fetch --prune
 	fp      = format-patch
-	ignored = !git ls-files -v | grep "^[[:lower:]]"
+	ignored = !echo "------- IGNORED: -------" && git ls-files -v | grep -E "^S\\|^[[:lower:]]" || echo "No ignored files."
 	ign     = ignored
 	ll      = log --all --graph --pretty=format:'%C(auto)%<(90,trunc)%s %h%d'
 	l       = ll -20
@@ -48,17 +50,32 @@ My favorite is `git l`. Oh, and `git al` is the mother of all aliases.
 	pd      = push origin --delete
 	pl      = pull --ff-only
 	pr      = !git push origin HEAD:\"$1\" && echo Pushed without tracking to
-	rb      = rebase --committer-date-is-author-date
+	rb      = rebase --interactive
+	rbc     = rebase --committer-date-is-author-date
+	rh      = reset --hard
 	rs      = restore --staged
 	rv      = remote -v
-	s       = status --short
-	st      = status
+	s       = !git status --short && git ignored
+	st      = !git status && echo "" && git ignored
 	sw      = switch
 	t       = log --oneline --decorate --tags --no-walk
 	uia     = update-index --assume-unchanged
-	uin     = update-index --no-assume-unchanged
+	uian    = update-index --no-assume-unchanged
+	uil     = ignored
+	uis     = update-index --skip-worktree
+	uisn    = update-index --no-skip-worktree
+	w       = worktree
+	wa      = worktree add
 ```
 
-I don't have anything else here at the moment.
+Also, I have aliased `g` to `git`. You can do this in `.zshrc` or `.bashrc`:
 
-Why don't you head on over to [my blog](https://thehunk.blogspot.com) and read some posts?
+```bash
+alias g="git"
+```
+
+With this, I can simply do `g l` instead of `git l`.
+
+---
+
+I don't have anything else here at the moment. Thanks for reading!
