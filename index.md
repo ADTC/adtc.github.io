@@ -1,7 +1,5 @@
 ## Hey there!
 
-![How you doin?](https://i.giphy.com/11SIBu3s72Co8w.gif)
-
 ### Want some neat Git aliases?
 
 My favorite is `git l`. Oh, and `git al` is the mother of all aliases.
@@ -66,6 +64,13 @@ My favorite is `git l`. Oh, and `git al` is the mother of all aliases.
 	uisn    = update-index --no-skip-worktree
 	w       = worktree
 	wa      = worktree add
+```
+
+You can put this directly inside your `.gitconfig` file. But a neat trick is to create a separate file called `.gitalias` then include it at the top of `.gitconfig`:
+
+```conf
+[include]
+	path = ~/.gitalias
 ```
 
 Also, I have aliased `g` to `git`. You can do this in `.zshrc` or `.bashrc`:
