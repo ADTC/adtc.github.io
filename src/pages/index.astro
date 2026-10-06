@@ -183,14 +183,56 @@ const jsonLd = {
 
   const visible = new Set<Element>();
   let current: Element | undefined;
+  let shown: Element | undefined;
+
+  const scrollers = [document.querySelector(".rail"), document.querySelector(".toc ul")].filter((box) => box !== null);
+  const overshoot = (start: number, end: number, min: number, max: number) =>
+    start < min ? start - min : end > max ? end - max : 0;
+
+  // Scrolls the sidebar or the mobile navbar, never the page, just enough to show the link.
+  const reveal = (link?: Element) => {
+    for (const box of scrollers) {
+      if (!link) {
+        box.scrollTo({ top: 0, left: 0 });
+        continue;
+      }
+      const outer = box.getBoundingClientRect();
+      const inner = link.getBoundingClientRect();
+      const style = getComputedStyle(box);
+      box.scrollBy({
+        left: overshoot(
+          inner.left,
+          inner.right,
+          outer.left + parseFloat(style.paddingLeft),
+          outer.right - parseFloat(style.paddingRight),
+        ),
+        top: overshoot(
+          inner.top,
+          inner.bottom,
+          outer.top + parseFloat(style.paddingTop),
+          outer.bottom - parseFloat(style.paddingBottom),
+        ),
+      });
+    }
+  };
+
   const update = () => {
     const sections = [...links.keys()];
     const atBottom = innerHeight + scrollY >= document.documentElement.scrollHeight - 4;
-    current = atBottom ? sections.at(-1) : (sections.find((section) => visible.has(section)) ?? current);
+    current = atBottom
+      ? sections.at(-1)
+      : (sections.find((section) => visible.has(section)) ?? (scrollY > 0 ? current : undefined));
     for (const [section, link] of links) {
       if (section === current) link.setAttribute("aria-current", "location");
       else link.removeAttribute("aria-current");
     }
+
+    // At the very top, the URL stays clean and the sidebar and navbar show their start.
+    const next = scrollY > 0 ? current : undefined;
+    if (next === shown) return;
+    shown = next;
+    reveal(next && links.get(next));
+    history.replaceState(history.state, "", next ? `#${next.id}` : location.pathname + location.search);
   };
 
   const observer = new IntersectionObserver(

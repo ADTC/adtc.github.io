@@ -166,9 +166,8 @@ svg {
   gap: 1.5rem;
   overflow-x: auto;
   padding: 0.85rem var(--pad);
+  scroll-behavior: smooth;
   scrollbar-width: none;
-  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent);
-  mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent);
 }
 
 .toc a {
@@ -235,6 +234,7 @@ svg {
     height: 100dvh;
     overflow-y: auto;
     padding-block: 4.5rem 2rem;
+    scroll-behavior: smooth;
     scrollbar-width: thin;
   }
 
@@ -262,8 +262,6 @@ svg {
     display: grid;
     gap: 0;
     overflow: visible;
-    -webkit-mask-image: none;
-    mask-image: none;
   }
 
   .toc a {
@@ -747,7 +745,9 @@ svg {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
+  html,
+  .rail,
+  .toc ul {
     scroll-behavior: auto;
   }
 
