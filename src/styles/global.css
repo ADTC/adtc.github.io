@@ -226,10 +226,16 @@ svg {
   }
 
   .rail {
+    position: sticky;
+    top: 0;
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
     padding-block: 4.5rem 2rem;
+    scrollbar-width: thin;
   }
 
   .intro,
@@ -281,17 +287,6 @@ svg {
   .toc a[aria-current]::before {
     width: 4rem;
     background: var(--accent);
-  }
-}
-
-@media (min-width: 64rem) and (min-height: 44rem) {
-  .rail {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    height: 100dvh;
-    overflow-y: auto;
-    scrollbar-width: thin;
   }
 }
 
