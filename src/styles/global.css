@@ -185,13 +185,13 @@ svg {
   white-space: nowrap;
 }
 
-.toc a:hover,
-.toc a[aria-current] {
+.toc a:hover {
   color: var(--text);
 }
 
 .toc a[aria-current] {
   border-color: var(--accent);
+  color: var(--accent);
 }
 
 .content {

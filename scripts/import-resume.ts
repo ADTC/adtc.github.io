@@ -49,6 +49,8 @@ interface Entry {
 
 const clean = (text: string) => text.replace(/\s*\n\s*/g, " ").trim();
 
+const capitalizeFirst = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
+
 function isHeading(token: Token, depth: number): token is Tokens.Heading {
   return token.type === "heading" && (token as Tokens.Heading).depth === depth;
 }
@@ -133,7 +135,9 @@ function splitTopLevel(text: string): string[] {
 
 function parseSkill(text: string): SkillItem {
   const match = /^(.+?)\s*\((.+)\)$/.exec(text);
-  return match?.[1] && match[2] ? { name: match[1], detail: match[2] } : { name: text };
+  return match?.[1] && match[2]
+    ? { name: capitalizeFirst(match[1]), detail: match[2] }
+    : { name: capitalizeFirst(text) };
 }
 
 function parseSkills(tokens: Token[]): SkillGroup[] {

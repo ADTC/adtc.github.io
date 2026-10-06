@@ -115,7 +115,7 @@
               "name": "Remotion"
             },
             {
-              "name": "tus resumable uploads"
+              "name": "Tus resumable uploads"
             }
           ]
         },
@@ -193,14 +193,14 @@
               "name": "Lighthouse"
             },
             {
-              "name": "caching strategy",
+              "name": "Caching strategy",
               "detail": "ISR"
             },
             {
               "name": "Schema.org/JSON-LD"
             },
             {
-              "name": "technical SEO"
+              "name": "Technical SEO"
             },
             {
               "name": "WCAG 2.1 AA"
@@ -211,16 +211,16 @@
           "label": "Reliability and security",
           "items": [
             {
-              "name": "incident response"
+              "name": "Incident response"
             },
             {
-              "name": "root-cause analysis"
+              "name": "Root-cause analysis"
             },
             {
-              "name": "observability"
+              "name": "Observability"
             },
             {
-              "name": "security hardening"
+              "name": "Security hardening"
             }
           ]
         }
@@ -240,7 +240,7 @@
               "name": "Hygraph"
             },
             {
-              "name": "headless WordPress"
+              "name": "Headless WordPress"
             },
             {
               "name": "Shopify",
@@ -284,7 +284,7 @@
               "name": "MJML"
             },
             {
-              "name": "responsive HTML email"
+              "name": "Responsive HTML email"
             },
             {
               "name": "React Email"
@@ -318,13 +318,13 @@
           "label": "Engineering practice",
           "items": [
             {
-              "name": "technical leadership and engineering standards"
+              "name": "Technical leadership and engineering standards"
             },
             {
-              "name": "code review"
+              "name": "Code review"
             },
             {
-              "name": "technical documentation"
+              "name": "Technical documentation"
             }
           ]
         },
@@ -573,6 +573,7 @@
     },
     {
       "name": "OneEmpower Pte Ltd",
+      "duration": "4 years 6 months",
       "roles": [
         {
           "title": "Java Software Engineer",
