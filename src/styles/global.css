@@ -899,12 +899,22 @@ svg {
     padding-block: 0.3rem;
   }
 
-  .chips,
+  .skill-row dt {
+    padding-top: 0;
+  }
+
+  .chips {
+    gap: 0.15rem 0.9rem;
+  }
+
+  .chip {
+    padding: 0;
+  }
+
   .tags {
     gap: 0.25rem;
   }
 
-  .chip,
   .tag {
     padding: 0.05rem 0.4rem;
     border: 1px solid var(--line);
