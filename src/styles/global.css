@@ -529,14 +529,17 @@ svg {
 }
 
 .bullets {
-  display: grid;
-  gap: 0.6rem;
   margin-top: 0.9rem;
 }
 
 .bullets li {
   position: relative;
   padding-left: 1.15rem;
+}
+
+/* Margins rather than a grid gap: Chrome won't page-break a grid nested in the entry grids. */
+.bullets li + li {
+  margin-top: 0.6rem;
 }
 
 .bullets li::before {
@@ -880,8 +883,11 @@ svg {
   }
 
   .bullets {
-    gap: 0.2rem;
     margin-top: 0.4rem;
+  }
+
+  .bullets li + li {
+    margin-top: 0.2rem;
   }
 
   .project-description,
