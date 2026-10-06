@@ -16,15 +16,6 @@ export const GET: APIRoute = ({ site }) => {
     `${profile.jobTitle} based in ${profile.location}. Languages: ${resume.languages.join(", ")}. Resume last updated ${resume.updated}.`,
     "",
     ...resume.summary.flatMap((text) => [text, ""]),
-    "Skills:",
-    "",
-    ...resume.skills.flatMap((group) =>
-      group.rows.map(
-        (row) =>
-          `- ${row.label}: ${row.items.map((item) => (item.detail ? `${item.name} (${item.detail})` : item.name)).join(", ")}`,
-      ),
-    ),
-    "",
     "Experience:",
     "",
     ...resume.experience.flatMap((company) =>
@@ -38,13 +29,22 @@ export const GET: APIRoute = ({ site }) => {
         `- ${project.name}${project.association ? `, ${project.association.org}` : ""} (${dates(project.period)}): ${project.description.join(" ")}`,
     ),
     "",
+    "Skills:",
+    "",
+    ...resume.skills.flatMap((group) =>
+      group.rows.map(
+        (row) =>
+          `- ${row.label}: ${row.items.map((item) => (item.detail ? `${item.name} (${item.detail})` : item.name)).join(", ")}`,
+      ),
+    ),
+    "",
     "Education:",
     "",
     ...resume.education.map((school) => `- ${school.credential}, ${school.school} (${dates(school.period)})`),
     "",
     "## Resume",
     "",
-    `- [Full resume](${new URL("/", site)}): skills, experience, projects, education and certifications`,
+    `- [Full resume](${new URL("/", site)}): experience, projects, skills, education and certifications`,
     "",
     "## Profiles",
     "",

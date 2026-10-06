@@ -17,9 +17,9 @@ const resume: Resume = data;
 
 const sections = [
   { id: "about", title: "About" },
-  { id: "skills", title: "Skills" },
   { id: "experience", title: "Experience" },
   { id: "projects", title: "Projects" },
+  { id: "skills", title: "Skills" },
   { id: "education", title: "Education" },
   { id: "certifications", title: "Certifications" },
 ];
@@ -142,16 +142,16 @@ const jsonLd = {
         </div>
       </Section>
 
-      <Section id="skills" title="Skills">
-        <Skills groups={resume.skills} />
-      </Section>
-
       <Section id="experience" title="Experience">
         <Experience companies={resume.experience} />
       </Section>
 
       <Section id="projects" title="Projects">
         <Projects projects={resume.projects} />
+      </Section>
+
+      <Section id="skills" title="Skills">
+        <Skills groups={resume.skills} />
       </Section>
 
       <Section id="education" title="Education">
