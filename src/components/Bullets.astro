@@ -1,0 +1,21 @@
+---
+import Inline from "./Inline.astro";
+
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <ul class="bullets">
+      {items.map((item) => (
+        <li>
+          <Inline text={item} />
+        </li>
+      ))}
+    </ul>
+  )
+}

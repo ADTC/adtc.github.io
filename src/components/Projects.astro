@@ -1,0 +1,50 @@
+---
+import type { Project } from "../lib/resume-types";
+import Bullets from "./Bullets.astro";
+import DateRange from "./DateRange.astro";
+import Inline from "./Inline.astro";
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<ol class="projects">
+  {
+    projects.map((project) => (
+      <li class="project">
+        <div class="entry-dates">
+          <DateRange period={project.period} />
+        </div>
+        <article class="entry-body">
+          <h3 class="project-name">{project.name}</h3>
+          {project.association && (
+            <p class="meta">
+              {project.association.org} · {project.association.role}
+            </p>
+          )}
+          {project.description.map((text) => (
+            <p class="project-description">
+              <Inline text={text} />
+            </p>
+          ))}
+          <Bullets items={project.bullets} />
+          {project.notes.map((text) => (
+            <p class="note">
+              <Inline text={text} />
+            </p>
+          ))}
+          {project.skills.length > 0 && (
+            <ul class="tags" aria-label="Skills">
+              {project.skills.map((skill) => (
+                <li class="tag">{skill}</li>
+              ))}
+            </ul>
+          )}
+        </article>
+      </li>
+    ))
+  }
+</ol>

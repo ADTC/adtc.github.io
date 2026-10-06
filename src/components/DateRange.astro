@@ -1,0 +1,37 @@
+---
+import type { Period } from "../lib/resume-types";
+
+interface Props {
+  period: Period;
+}
+
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+function toDate(text: string): { label: string; datetime?: string } {
+  const [, month = "", year = ""] = /^([A-Za-z]+)\s+(\d{4})$/.exec(text.trim()) ?? [];
+  const index = MONTHS.indexOf(month);
+  if (index < 0) return { label: text };
+  return { label: `${month.slice(0, 3)} ${year}`, datetime: `${year}-${String(index + 1).padStart(2, "0")}` };
+}
+
+const { period } = Astro.props;
+const start = toDate(period.start);
+const end = toDate(period.end);
+---
+
+<p class="dates">
+  <span class="range"><time datetime={start.datetime}>{start.label}</time> <span aria-hidden="true">–</span><span class="visually-hidden">to</span> <time datetime={end.datetime}>{end.label}</time></span>{period.duration && <> <span class="duration">{period.duration}</span></>}
+</p>

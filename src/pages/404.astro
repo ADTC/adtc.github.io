@@ -1,0 +1,12 @@
+---
+import data from "../data/resume.json";
+import Base from "../layouts/Base.astro";
+---
+
+<Base title={`Page not found · ${data.name}`} description="This page doesn't exist." noindex>
+  <main class="not-found">
+    <p class="not-found-code">404</p>
+    <h1>This page doesn't exist.</h1>
+    <p><a href="/">Go to the homepage</a></p>
+  </main>
+</Base>

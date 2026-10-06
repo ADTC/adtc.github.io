@@ -1,0 +1,196 @@
+---
+import Bullets from "../components/Bullets.astro";
+import Education from "../components/Education.astro";
+import Experience from "../components/Experience.astro";
+import Inline from "../components/Inline.astro";
+import Projects from "../components/Projects.astro";
+import Section from "../components/Section.astro";
+import Skills from "../components/Skills.astro";
+import data from "../data/resume.json";
+import Base from "../layouts/Base.astro";
+import type { Resume } from "../lib/resume-types";
+import { site } from "../site";
+
+const resume: Resume = data;
+
+const sections = [
+  { id: "about", title: "About" },
+  { id: "skills", title: "Skills" },
+  { id: "experience", title: "Experience" },
+  { id: "projects", title: "Projects" },
+  { id: "education", title: "Education" },
+  { id: "certifications", title: "Certifications" },
+];
+
+const updated = new Date(`${resume.updated}T00:00:00Z`);
+const updatedLabel = updated.toLocaleDateString("en-GB", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
+const title = `${resume.name} · ${site.jobTitle}`;
+const pageUrl = new URL("/", Astro.site).href;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  url: pageUrl,
+  dateModified: resume.updated,
+  mainEntity: {
+    "@type": "Person",
+    name: resume.name,
+    jobTitle: site.jobTitle,
+    description: resume.headline,
+    url: pageUrl,
+    address: { "@type": "PostalAddress", ...site.address },
+    sameAs: resume.links.map((link) => link.url),
+    knowsLanguage: resume.languages.map((language) => language.replace(/\s*\(.*\)$/, "")),
+    knowsAbout: resume.skills.flatMap((group) => group.rows.flatMap((row) => row.items.map((item) => item.name))),
+    alumniOf: resume.education.map((school) => ({ "@type": "EducationalOrganization", name: school.school })),
+  },
+};
+---
+
+<Base title={title} description={resume.headline} jsonLd={jsonLd}>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="page">
+    <div class="rail">
+      <header class="intro">
+        <h1 class="name">
+          {
+            resume.name.split(" ").map((word, index) => (
+              <>
+                {index > 0 && " "}
+                <span>{word}</span>
+              </>
+            ))
+          }
+        </h1>
+        <p class="headline">{resume.headline}</p>
+        <ul class="facts">
+          <li>
+            <svg viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M8 1.75a4.5 4.5 0 0 0-4.5 4.5c0 3.25 4.5 8 4.5 8s4.5-4.75 4.5-8A4.5 4.5 0 0 0 8 1.75Z"></path>
+              <circle cx="8" cy="6.25" r="1.5"></circle>
+            </svg>
+            {site.location}
+          </li>
+          {
+            resume.languages.map((language) => (
+              <li>
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2Z" />
+                </svg>
+                {language}
+              </li>
+            ))
+          }
+        </ul>
+        <ul class="links">
+          {
+            resume.links.map((link) => (
+              <li>
+                <a href={link.url} rel="me">
+                  {link.label}
+                  <span class="print-only">: {link.text}</span>
+                  <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M5.5 10.5 10.5 5.5M6.5 5.5h4v4" />
+                  </svg>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </header>
+      <nav class="toc" aria-label="Sections">
+        <ul>
+          {
+            sections.map((section) => (
+              <li>
+                <a href={`#${section.id}`}>{section.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <main id="content" class="content">
+      <Section id="about" title="About">
+        <div class="about">
+          {
+            resume.summary.map((text) => (
+              <p>
+                <Inline text={text} />
+              </p>
+            ))
+          }
+        </div>
+      </Section>
+
+      <Section id="skills" title="Skills">
+        <Skills groups={resume.skills} />
+      </Section>
+
+      <Section id="experience" title="Experience">
+        <Experience companies={resume.experience} />
+      </Section>
+
+      <Section id="projects" title="Projects">
+        <Projects projects={resume.projects} />
+      </Section>
+
+      <Section id="education" title="Education">
+        <Education schools={resume.education} />
+      </Section>
+
+      <Section id="certifications" title="Certifications">
+        <div class="certifications">
+          <Bullets items={resume.certifications} />
+        </div>
+      </Section>
+
+      <footer class="colophon">
+        <p>
+          Updated <time datetime={resume.updated}>{updatedLabel}</time>. Built with Astro and hosted on GitHub Pages.{" "}
+          <a href={site.repo}>View the source</a>.
+        </p>
+      </footer>
+    </main>
+  </div>
+</Base>
+
+<script>
+  const links = new Map<Element, HTMLAnchorElement>();
+  for (const link of document.querySelectorAll<HTMLAnchorElement>(".toc a")) {
+    const target = document.getElementById(link.hash.slice(1));
+    if (target) links.set(target, link);
+  }
+
+  const visible = new Set<Element>();
+  let current: Element | undefined;
+  const update = () => {
+    const sections = [...links.keys()];
+    const atBottom = innerHeight + scrollY >= document.documentElement.scrollHeight - 4;
+    current = atBottom ? sections.at(-1) : (sections.find((section) => visible.has(section)) ?? current);
+    for (const [section, link] of links) {
+      if (section === current) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    }
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) visible.add(entry.target);
+        else visible.delete(entry.target);
+      }
+      update();
+    },
+    { rootMargin: "-35% 0px -60% 0px" },
+  );
+  for (const section of links.keys()) observer.observe(section);
+  addEventListener("scroll", update, { passive: true });
+</script>

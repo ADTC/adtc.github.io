@@ -1,0 +1,872 @@
+{
+  "updated": "2026-10-06",
+  "name": "Arundas Thulasidas Chandraleeba",
+  "headline": "Senior Full-Stack Software Engineer building web platforms with TypeScript, React, Astro and Python/Django on AWS, leading migrations and incident response, and directing AI coding agents with careful human review.",
+  "links": [
+    {
+      "label": "LinkedIn",
+      "text": "www.linkedin.com/in/arundas-tc",
+      "url": "https://www.linkedin.com/in/arundas-tc/"
+    },
+    {
+      "label": "GitHub",
+      "text": "github.com/ADTC",
+      "url": "https://github.com/ADTC"
+    },
+    {
+      "label": "StackOverflow",
+      "text": "stackoverflow.com/users/1134080/adtc",
+      "url": "https://stackoverflow.com/users/1134080/adtc"
+    },
+    {
+      "label": "Blog",
+      "text": "thehunk.blogspot.com",
+      "url": "https://thehunk.blogspot.com/"
+    }
+  ],
+  "skills": [
+    {
+      "title": "Languages and frameworks",
+      "rows": [
+        {
+          "label": "Languages",
+          "items": [
+            {
+              "name": "TypeScript"
+            },
+            {
+              "name": "JavaScript",
+              "detail": "ES6+"
+            },
+            {
+              "name": "Python"
+            },
+            {
+              "name": "Go",
+              "detail": "working knowledge"
+            },
+            {
+              "name": "SQL"
+            },
+            {
+              "name": "HTML5"
+            },
+            {
+              "name": "CSS3"
+            },
+            {
+              "name": "Java"
+            },
+            {
+              "name": "Bash/zsh"
+            }
+          ]
+        },
+        {
+          "label": "Frontend",
+          "items": [
+            {
+              "name": "React"
+            },
+            {
+              "name": "Next.js",
+              "detail": "App Router, React Server Components"
+            },
+            {
+              "name": "Astro"
+            },
+            {
+              "name": "Vue 3"
+            },
+            {
+              "name": "Alpine.js"
+            },
+            {
+              "name": "Tailwind CSS"
+            },
+            {
+              "name": "CSS Modules"
+            },
+            {
+              "name": "Radix UI"
+            },
+            {
+              "name": "Vite"
+            },
+            {
+              "name": "MDX"
+            }
+          ]
+        },
+        {
+          "label": "Video and browser APIs",
+          "items": [
+            {
+              "name": "Chrome extensions",
+              "detail": "Plasmo, Manifest V3"
+            },
+            {
+              "name": "Canvas and MediaRecorder APIs"
+            },
+            {
+              "name": "HLS.js"
+            },
+            {
+              "name": "Remotion"
+            },
+            {
+              "name": "tus resumable uploads"
+            }
+          ]
+        },
+        {
+          "label": "Backend",
+          "items": [
+            {
+              "name": "Node.js"
+            },
+            {
+              "name": "Django"
+            },
+            {
+              "name": "Django REST Framework"
+            },
+            {
+              "name": "Celery"
+            },
+            {
+              "name": "Redis"
+            },
+            {
+              "name": "PostgreSQL"
+            },
+            {
+              "name": "REST APIs"
+            },
+            {
+              "name": "GraphQL"
+            },
+            {
+              "name": "WebSockets"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cloud, performance and reliability",
+      "rows": [
+        {
+          "label": "Cloud and DevOps",
+          "items": [
+            {
+              "name": "AWS",
+              "detail": "Elastic Beanstalk, EC2 Spot, Graviton/ARM64, Auto Scaling, RDS, S3, CloudFront, Lambda, CodeBuild, SSM Parameter Store, CloudWatch"
+            },
+            {
+              "name": "Terraform"
+            },
+            {
+              "name": "CloudFormation"
+            },
+            {
+              "name": "Docker"
+            },
+            {
+              "name": "Vercel"
+            },
+            {
+              "name": "GitHub Actions"
+            },
+            {
+              "name": "CI/CD"
+            }
+          ]
+        },
+        {
+          "label": "Web performance, SEO and accessibility",
+          "items": [
+            {
+              "name": "Core Web Vitals"
+            },
+            {
+              "name": "Lighthouse"
+            },
+            {
+              "name": "caching strategy",
+              "detail": "ISR"
+            },
+            {
+              "name": "Schema.org/JSON-LD"
+            },
+            {
+              "name": "technical SEO"
+            },
+            {
+              "name": "WCAG 2.1 AA"
+            }
+          ]
+        },
+        {
+          "label": "Reliability and security",
+          "items": [
+            {
+              "name": "incident response"
+            },
+            {
+              "name": "root-cause analysis"
+            },
+            {
+              "name": "observability"
+            },
+            {
+              "name": "security hardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Platforms and integrations",
+      "rows": [
+        {
+          "label": "CMS and e-commerce",
+          "items": [
+            {
+              "name": "Sanity",
+              "detail": "GROQ"
+            },
+            {
+              "name": "Hygraph"
+            },
+            {
+              "name": "headless WordPress"
+            },
+            {
+              "name": "Shopify",
+              "detail": "Liquid"
+            }
+          ]
+        },
+        {
+          "label": "Integrations",
+          "items": [
+            {
+              "name": "Auth0"
+            },
+            {
+              "name": "Stripe"
+            },
+            {
+              "name": "DocuSign"
+            },
+            {
+              "name": "Wise API"
+            },
+            {
+              "name": "Google Calendar API"
+            },
+            {
+              "name": "Slack API"
+            },
+            {
+              "name": "Sentry"
+            },
+            {
+              "name": "Intercom"
+            }
+          ]
+        },
+        {
+          "label": "Email and martech",
+          "items": [
+            {
+              "name": "MJML"
+            },
+            {
+              "name": "responsive HTML email"
+            },
+            {
+              "name": "React Email"
+            },
+            {
+              "name": "Marketo"
+            },
+            {
+              "name": "Adobe Journey Optimizer"
+            },
+            {
+              "name": "Oracle Eloqua"
+            },
+            {
+              "name": "HubSpot"
+            },
+            {
+              "name": "Google Tag Manager"
+            },
+            {
+              "name": "GA4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Practices and AI",
+      "rows": [
+        {
+          "label": "Engineering practice",
+          "items": [
+            {
+              "name": "technical leadership and engineering standards"
+            },
+            {
+              "name": "code review"
+            },
+            {
+              "name": "technical documentation"
+            }
+          ]
+        },
+        {
+          "label": "AI-assisted development and automation",
+          "items": [
+            {
+              "name": "Cursor"
+            },
+            {
+              "name": "Claude"
+            },
+            {
+              "name": "Claude Code"
+            },
+            {
+              "name": "Gemini API"
+            },
+            {
+              "name": "Model Context Protocol"
+            },
+            {
+              "name": "Google Apps Script"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "languages": [
+    "English (Native or Bilingual)"
+  ],
+  "certifications": [
+    "Dynamic Leadership Path Completion (Toastmasters International)",
+    "AI Product Management (Duke University)",
+    "Managing Machine Learning Projects (Duke University)",
+    "Machine Learning Foundations for Product Managers (Duke University)",
+    "LinkedIn courses on Web Development, Git, and Spring Boot",
+    "Codecademy courses on Bash, Git, and Ruby on Rails"
+  ],
+  "summary": [
+    "I'm a Senior Full-Stack Software Engineer who has built software professionally since 2012, from Java/J2EE systems for banks and a major telco in Singapore to TypeScript and Python web platforms today. At Hire Digital, I owned the company's public web platform (hiredigital.com) and its Python/Django backend on AWS, and delivered web and email projects for enterprise clients including NEC, Singtel, Manulife, Roche and CapitaLand. Before that, I was tech lead and main frontend developer of Avie.ai, an internal AI video-personalization product.",
+    "I led the full migration of hiredigital.com from Next.js to Astro, re-architected the backend's AWS infrastructure (ARM64 Graviton, EC2 Spot, AWS CodeBuild CI/CD), and handled production incidents from root cause through to runbook. Over 4 years I made 3,800+ commits across 24 repositories, as the primary or sole developer on 12 of them.",
+    "I work AI-first. I direct AI coding agents (Cursor, Claude) using codified rules, multi-repository coordination and independent verification, and I review the generated code for correctness and quality so it doesn't introduce regressions or new bugs. I also build AI automation for non-engineering teams, such as a human-in-the-loop pipeline that turns a topic in a Google Sheet into a researched, approved and drafted blog post.",
+    "My passion for computers started when I was 9 or 10 years old, typing MS-DOS commands to see what they would make the computer do. Those 8.3 named files and folders felt natural to my technical brain, and they sparked a fire that still burns in me 30 years later. After a short detour into mechatronics and aerospace, my passion called me back to get a Bachelor's degree in Computer Science. I learn new systems quickly, and I look for hardened, long-term solutions rather than quick fixes.",
+    "I'm now looking for my next Senior Full-Stack role, with new systems to learn and challenges worth solving. I'm especially interested in using AI to ship better code faster than humanly possible, while keeping it in check with human quality assurance. If an engineer who never gives up on a technical challenge until a great solution is found sounds like a good fit for your company, reach out and we can discuss a partnership where we deliver the right value to each other."
+  ],
+  "experience": [
+    {
+      "name": "Hire Digital",
+      "duration": "5 years 3 months",
+      "roles": [
+        {
+          "title": "Senior Full-Stack Software Engineer (Cloud & DevOps)",
+          "period": {
+            "start": "June 2026",
+            "end": "October 2026",
+            "duration": "5 months"
+          },
+          "meta": [],
+          "bullets": [
+            "Migrated the production Django backend on AWS Elastic Beanstalk from x86 to ARM64 Graviton, with memory-aware Auto Scaling on diversified EC2 Spot capacity that turned a fixed 2 instances into an elastic 1 to 3. Right-sized the Typesense search server with Terraform, cutting its compute cost by 47%.",
+            "Replaced laptop-based deploys with AWS CodeBuild CI/CD pipelines and moved secrets into AWS Systems Manager (SSM) Parameter Store, ending out-of-memory crashes during deployments.",
+            "Led root-cause analysis and remediation of 2 production outages caused by worker thread-pool exhaustion: moved image processing to Celery, added S3 client timeouts and load-shedding middleware (HTTP 429), and set up Amazon CloudWatch alerts to Slack. Documented the fixes in a 1,000+ line runbook.",
+            "Cut latency on a high-traffic public API endpoint by ~90% (~48 s to ~4.6 s) by eliminating an N+1 query pattern (1+3N queries down to 1), and cached Google Calendar availability lookups (~11 s to 0.1 s on a cache hit).",
+            "Rebuilt the candidate video-interview recorder (React) and built its Django backend across 4 repositories: direct-to-S3 uploads, CloudFront signed playback, idempotent submissions with exponential-backoff retries, Slack notifications and retry-safe Celery tasks.",
+            "Stopped bot-driven lead and registration spam with Vercel BotID on 16 protected routes (fail-open, so real leads are never blocked), CORS allowlists and per-IP rate limits, and cleaned 1,618 spam registrations out of production.",
+            "Built an AI content pipeline for the marketing team, then automated it end to end: first 3 custom Claude skills and a six-step Claude and Gemini writing workflow (4 posts now live on hiredigital.com), then a human-in-the-loop automation that turns a topic in a Google Sheet into a researched outline and, once approved, a full draft with images. It runs at no added cost on Claude Code routines, Google Apps Script and Gemini's free tier."
+          ],
+          "notes": []
+        },
+        {
+          "title": "Senior Full-Stack Software Engineer",
+          "period": {
+            "start": "January 2025",
+            "end": "May 2026",
+            "duration": "1 year 5 months"
+          },
+          "meta": [],
+          "bullets": [
+            "Led the migration of hiredigital.com from a legacy Next.js application to Astro 5 server-side rendering (SSR) on Vercel, from the first hybrid cutover in February 2025 to retiring the legacy app in May 2026. Ported ~96 routes (authentication, multi-step signup wizards, talent resumes, Stripe and DocuSign flows) and 168 SEO-preserving redirects.",
+            "Designed the caching architecture for ~1,275 CMS-driven talent pages: Incremental Static Regeneration (ISR), an in-memory TTL cache, webhook-driven revalidation and a post-deploy cache warm-up. Hardened it against cache poisoning, so upstream failures are cached for 60 seconds instead of 24 hours.",
+            "Cut homepage render-blocking CSS by 52% (243 KiB to 116 KiB), removed ~26 KiB (gzipped) of JavaScript by replacing an animation library with CSS, and replaced a third-party carousel with dependency-free code. Brought the site to WCAG AA color contrast by retuning design tokens in OKLCH.",
+            "Replaced a third-party scheduler (Cal.com) with an in-house Book-a-Demo modal across 20 entry points, and audited 19 lead forms to restore Slack and HubSpot lead alerts that were failing silently.",
+            "Main contributor to the React/Next.js frontend monorepo (admin dashboard, talent and client portals) in 2025: synced React 18.3 across 5 workspaces, removed deprecated defaultProps from 33 files, fixed 14 Sentry errors in one pass, and upgraded Prettier and ESLint.",
+            "Established AI-assisted engineering practice across repositories with AGENTS.md files and Cursor rules covering design language, AWS access, secret handling and read-only production database access. Directed multi-agent, cross-repository changes (frontend, backend, admin) with versioned coordination documents and independent verification reviews before merge, across 700+ AI agent sessions."
+          ],
+          "notes": []
+        },
+        {
+          "title": "Full-Stack Software Engineer",
+          "period": {
+            "start": "January 2023",
+            "end": "December 2024",
+            "duration": "2 years"
+          },
+          "meta": [],
+          "bullets": [
+            "Top contributor to the React/Next.js frontend monorepo (admin dashboard, talent and client portals, marketing sites) in 2023, with more than half of its commits, and reviewed and merged teammates' pull requests.",
+            "Delivered a feature-flagged pricing-model migration (\"New Rates\") across the admin app, talent portal and marketing site, with shared rate components in the internal React UI library.",
+            "Built Wise bank-account payouts: a payment-method form generated from Wise's requirements API, Wise currencies in the currency picker, and a bank API client with a fallback.",
+            "Overhauled time tracking: built the admin summary and tree views, moved the client and talent portals to the new Time Tracker API, and added overlap validation, editing and paid/unpaid marking.",
+            "Built CI/CD for the Electron desktop time tracker: a macOS, Windows and Linux build matrix triggered by pull-request comments.",
+            "Masked personal data in public resume and portfolio links unless shared through a private link, and fixed duplicate and orphaned WebSocket connections in real-time notifications.",
+            "From August 2023, led frontend development of Avie.ai, an internal AI video-personalization product (see the separate Avie.ai entry)."
+          ],
+          "notes": []
+        },
+        {
+          "title": "Frontend Developer (Shopify & React)",
+          "period": {
+            "start": "August 2021",
+            "end": "December 2022",
+            "duration": "1 year 5 months"
+          },
+          "meta": [],
+          "bullets": [
+            "Worked with a remote team of developers to bring a large project to fruition.",
+            "Until September 2022: contracted as a full-time consultant with Reckitt Benckiser Plc (see the separate Reckitt entry).",
+            "From October 2022: worked internally on new functionality in the React-based admin dashboard and portals, starting with time-tracking admin views.",
+            "Built an account-based marketing (ABM) microsite in Next.js and Hygraph with HubSpot meeting scheduling, webinar forms and static generation."
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "name": "Avie.ai",
+      "roles": [
+        {
+          "title": "Tech Lead and Frontend Engineer",
+          "period": {
+            "start": "August 2023",
+            "end": "December 2024",
+            "duration": "1 year 5 months"
+          },
+          "meta": [
+            "Avie - Record one video. Personalize thousands with AI."
+          ],
+          "bullets": [
+            "Created the Avie web app and was its primary developer: Next.js 14 (App Router, React Server Components, Server Actions) and TypeScript on Vercel, with Auth0 sign-in, Sentry monitoring and Intercom support.",
+            "Built an in-browser recorder that composites a screen share with a draggable circular webcam bubble on a canvas and records webcam video in 1080p MP4, with resumable uploads over tus (Uppy) and HLS playback from Cloudflare Stream.",
+            "Built the personalization workflow: a transcript editor that turns selected words into variables, a spreadsheet-style table with CSV import for bulk requests, bulk generation with live status, and GIF and image thumbnail pickers.",
+            "Built sharing and export: generated landing pages, embeddable web players, email embeds with GIF previews, and reusable export-settings templates with auto-save. Sent transactional emails with React Email.",
+            "Worked closely with the backend developer on organization, team, folder and invitation management, role-based permissions, billing and minute entitlements, and contributed endpoints and billing fixes to the Go API gateway (Gin, Casbin, PostgreSQL).",
+            "Built most of a Chrome extension (Plasmo, React) that adds an Avie button to chats on 7 platforms, including LinkedIn (Sales Navigator and Recruiter), X, WhatsApp and TikTok, and opens a side panel to make a personalized video for that contact.",
+            "Worked with the Remotion team, including its creator, on a browser video editor built on Remotion Player: a multi-track timeline with drag-and-drop and transitions, avatar cropping, script items and PDF import. Contributed fixes and features to Remotion's Timeline component, merged upstream."
+          ],
+          "notes": [
+            "Note: This was an internal project and a part of my employment in Hire Digital."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Reckitt",
+      "roles": [
+        {
+          "title": "Shopify Developer",
+          "period": {
+            "start": "August 2021",
+            "end": "September 2022",
+            "duration": "1 year 2 months"
+          },
+          "meta": [],
+          "bullets": [
+            "Develop and manage Shopify pages, features and apps for the e-commerce websites selling health, hygiene and nutrition products.",
+            "Advise the larger team on Shopify features and capabilities and on integration possibilities with other back-end and middle-ware architectures.",
+            "Contracted as a full-time consultant via \"Hire Digital\" Singapore."
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "name": "Shopify",
+      "roles": [
+        {
+          "title": "Shopify Expert Consultant",
+          "period": {
+            "start": "January 2021",
+            "end": "August 2021",
+            "duration": "8 months"
+          },
+          "meta": [],
+          "bullets": [
+            "Customize themes for Shopify merchants, entrepreneurs and business owners.",
+            "Extensive knowledge of Liquid programming language as well as front-end languages (HTML, CSS, JS)",
+            "Ability to install and configure apps from the Shopify Marketplace.",
+            "Background knowledge of being an entrepreneur helps suggest business-driven solutions to the clients.",
+            "Several satisfied clients whose exact business requirements were implemented on their e-commerce store websites. (See LinkedIn recommendations.)",
+            "Keeping up-to-date with the new features and changes in the Shopify ecosystem."
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "name": "Molinos de la Especia",
+      "roles": [
+        {
+          "title": "Chief Technology Officer",
+          "period": {
+            "start": "November 2016",
+            "end": "December 2020",
+            "duration": "4 years 2 months"
+          },
+          "meta": [
+            "Cebu, Central Visayas, Philippines"
+          ],
+          "bullets": [
+            "Self-employed entrepreneur in a corporation, managing a small team, overseeing daily operations and implementing technology solutions.",
+            "Handled the technology systems and processes required to run the day to day business operations such as accounting and inventory.",
+            "Developed, installed and maintained a basic e-commerce website using Amazon AWS, written in PHP technology.",
+            "Subscribed, configured and maintained the company email system in Zoho Workplace.",
+            "Developed and maintained a Shopify e-commerce website (replacing older website), gaining knowledge of Liquid programming and Shopify theme customization.",
+            "Created and maintained integrations between different systems like Shopify, QuickBooks and YNAB using Integromat.",
+            "Trained staff and employees on the daily business operations and on how to use computers and systems necessary for the business."
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "name": "CoDev",
+      "roles": [
+        {
+          "title": "Java Software Developer",
+          "period": {
+            "start": "October 2017",
+            "end": "August 2018",
+            "duration": "11 months"
+          },
+          "meta": [
+            "Metro Cebu"
+          ],
+          "bullets": [
+            "Remotely handled the development work required for a USA-based client delivering festival retail management systems.",
+            "Developed and maintained technology solutions that use RFID-based wristbands at music festivals and large arenas for the easy \"cashless\" purchases of products such as food, drinks, and memorabilia.",
+            "Cooperated with QA teams to fully ensure the code changes are production-ready for deployment over several POS machines and RFID readers installed all over vendor stalls in an active ongoing festival.",
+            "Attended daily scrum meetings with the teams to sync up and manage work properly, utilizing Skype and Slack for communication."
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "name": "OneEmpower Pte Ltd",
+      "roles": [
+        {
+          "title": "Java Software Engineer",
+          "period": {
+            "start": "August 2012",
+            "end": "October 2016",
+            "duration": "4 years 3 months"
+          },
+          "meta": [
+            "North East, Singapore"
+          ],
+          "bullets": [
+            "Worked in company projects with a major telco and two major banks in Singapore, as well as other banks and companies overseas.",
+            "Worked directly with clients to fully understand their requirements and implement the system changes as closely as possible to match them.",
+            "Developed Java/J2EE projects with various libraries and modules, including SMS gateway, email gateway, SFTP / ConnectDirect file transfer, text report generation, EOD batch processing, and NFC reader libraries.",
+            "Built applications for use in POS systems and servers, and acquired knowledge of batch scheduling frameworks like TWS.",
+            "Acquired experience in Linux and AIX shell scripting, Oracle, PostgreSQL, and DB2 database query writing and tuning, JBoss/Tomcat/Websphere application deployment and client support services.",
+            "Studied and built upon tools like JasperReports, Hibernate and Maven.",
+            "Familiarized with version control systems like SVN, CVS, and Git and has well-acquired knowledge of Git workflows.",
+            "Developed interpersonal skills and teamwork abilities to work with international teams and clients from different countries.",
+            "Consulted with engineering staff and hardware vendors to evaluate interface between hardware and software.",
+            "Self-taught knowledge gathered from Internet resources and online communities as well as team members and used for problem-solving and solution optimization."
+          ],
+          "notes": []
+        },
+        {
+          "title": "Java Software Engineer Intern",
+          "period": {
+            "start": "May 2011",
+            "end": "July 2011",
+            "duration": "3 months"
+          },
+          "meta": [
+            "Tanah Merah"
+          ],
+          "bullets": [
+            "Developed and deployed report layouts in JasperReports and Java for generating readable reports from raw data in a customer database.",
+            "Debugged and modified software components.",
+            "Performed black box testing on web pages for accessing customer databases.",
+            "Performed regression and system-level testing to verify software quality and function before it was released.",
+            "Developed new additional pages using HTML, JSP, and JavaScript.",
+            "Modified existing software to correct errors, adapt to new hardware, and improve performance."
+          ],
+          "notes": []
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Singtel WanderJoy travel-deals site",
+      "period": {
+        "start": "June 2025",
+        "end": "September 2026"
+      },
+      "association": {
+        "org": "Hire Digital",
+        "role": "Senior Full-Stack Software Engineer"
+      },
+      "description": [
+        "Travel-deals site for Singtel and 8 partner telcos in 8 countries, built with Astro server-side rendering and Vue 3 on Vercel. Primary developer."
+      ],
+      "bullets": [
+        "Fixed a production personalization bug where visitors saw 152 deals instead of 127, by moving telco and country detection into server-side rendering with Vercel geolocation and removing duplicate detection from 4 components. Also enabled edge image optimization.",
+        "Expanded the site to 5 languages, adding Thai, Indonesian and Japanese in about 4 weeks, with cultural rules such as Buddhist Era years and Japanese honorifics.",
+        "Built an HMAC-SHA256-signed voucher-token API for Telkomsel, with a nonce and inputs resolved on the server.",
+        "Added technical SEO (sitemap, canonical and hreflang tags, JSON-LD, FAQ schema) and GA4 and Google Tag Manager event tracking. Reconciled a full catalogue refresh of 131 source rows against 195 existing deal files."
+      ],
+      "skills": [
+        "Astro",
+        "Vue.js",
+        "Vercel",
+        "TypeScript",
+        "Search Engine Optimization (SEO)"
+      ],
+      "notes": []
+    },
+    {
+      "name": "NEC ASEAN regional website and Sanity CMS",
+      "period": {
+        "start": "June 2025",
+        "end": "September 2026"
+      },
+      "association": {
+        "org": "Hire Digital",
+        "role": "Senior Full-Stack Software Engineer"
+      },
+      "description": [
+        "NEC's regional website for 6 ASEAN countries, built with Astro and hosted on a static file server."
+      ],
+      "bullets": [
+        "Built a headless Sanity content hub for Experts articles and Case Studies. The host can't rebuild on demand, so content is fetched in the browser, and one page serves both the listing and each article, with pagination, skeleton loading and FAQ structured data.",
+        "Sole developer of the Sanity Studio: a content model with per-country variants, 13 reusable field modules, editor preview links and auto-deploy via GitHub Actions. Migrated 8 case studies into the CMS using AI agents with the Figma and Sanity MCP servers.",
+        "Built a Frost & Sullivan campaign page whose browser-side validation mirrors Oracle Eloqua's server rules, so rejected leads are no longer silently lost. It passed a 22-point check against the client's reference form.",
+        "Sped up the Experts page by bundling Sanity instead of loading it from a CDN, and by merging 2 queries into 1 and 3 scripts into 1."
+      ],
+      "skills": [
+        "Astro",
+        "Sanity",
+        "GROQ",
+        "Headless CMS",
+        "Oracle Eloqua"
+      ],
+      "notes": []
+    },
+    {
+      "name": "NEC Singapore corporate website",
+      "period": {
+        "start": "February 2025",
+        "end": "September 2026"
+      },
+      "association": {
+        "org": "Hire Digital",
+        "role": "Senior Full-Stack Software Engineer"
+      },
+      "description": [
+        "End-to-end rebuild of NEC Singapore's corporate website. Sole developer for 19 months."
+      ],
+      "bullets": [
+        "Built 76 reusable components and 21 typed content modules in Astro, TypeScript, Tailwind CSS and Alpine.js.",
+        "Engineered the site to run inside NEC's legacy global template (scoped Tailwind, fixed-pixel spacing), and built a ZIP-based release pipeline with hash-free assets and CMS-compliant file names for handoff to NEC Japan's IT team.",
+        "Added FAQ structured data (69 FAQs across 13 pages), breadcrumbs and Open Graph tags, a keyboard-accessible video dialog and menus, and one popup player for Brightcove, YouTube and Mux.",
+        "Integrated Oracle Eloqua lead capture, Google Tag Manager, PostHog and cookie consent, and kept the site in step with the business, including new NEC Labs, Careers and Financial Solutions pages and the Cyber Defence Services launch."
+      ],
+      "skills": [
+        "Astro",
+        "TypeScript",
+        "Tailwind CSS",
+        "Alpine.js",
+        "Web Accessibility"
+      ],
+      "notes": []
+    },
+    {
+      "name": "Singtel Insurance financial-planning simulators",
+      "period": {
+        "start": "December 2024",
+        "end": "January 2026"
+      },
+      "association": {
+        "org": "Hire Digital",
+        "role": "Full-Stack Software Engineer"
+      },
+      "description": [
+        "Five financial-planning simulators and quizzes embedded on singtel.com, built in React and TypeScript. Top contributor."
+      ],
+      "bullets": [
+        "Built the fourth and fifth tools: the Education Planning quiz, and the Mortgage Planning calculator with a pie-chart breakdown that expands on hover or tap, auto-sizing inputs with stepper buttons, and inputs saved in URL parameters.",
+        "Led the conversion from Next.js to plain React (Create React App, React Router, CSS Modules), removing Tailwind, Jotai and other dependencies so the app could share a page and styles with the client's existing codebase.",
+        "Submitted answers to Singtel's API, tracked answers and steps in Google Tag Manager, applied the client's UAT changes, and turned on strict TypeScript and ESLint."
+      ],
+      "skills": [
+        "React.js",
+        "TypeScript",
+        "Chart.js",
+        "CSS Modules",
+        "Google Tag Manager"
+      ],
+      "notes": []
+    },
+    {
+      "name": "Manulife Singapore personality quiz",
+      "period": {
+        "start": "March 2026",
+        "end": "September 2026"
+      },
+      "association": {
+        "org": "Hire Digital",
+        "role": "Senior Full-Stack Software Engineer"
+      },
+      "description": [
+        "Mobile-first financial-personality quiz for Manulife Singapore, built with Astro. Sole developer."
+      ],
+      "bullets": [
+        "Built 10 questions with 5 options each, 5 personality archetypes and 35 static routes. Scoring runs privately in the browser, with a Fisher–Yates shuffle and an ordered tie-break.",
+        "Added 15 shareable result pages with Open Graph metadata, sharing through the Web Share and Clipboard APIs, and a debug build for QA."
+      ],
+      "skills": [
+        "Astro",
+        "JavaScript",
+        "HTML5",
+        "CSS",
+        "Responsive Web Design"
+      ],
+      "notes": []
+    },
+    {
+      "name": "Manulife Singapore email platform",
+      "period": {
+        "start": "September 2026",
+        "end": "October 2026"
+      },
+      "association": {
+        "org": "Hire Digital",
+        "role": "Senior Full-Stack Software Engineer (Cloud & DevOps)"
+      },
+      "description": [
+        "Email build platform for Manulife Singapore's Marketo and Adobe Journey Optimizer (AJO) campaigns. Took over the repository in September 2026."
+      ],
+      "bullets": [
+        "Modernized the MJML build pipeline with a root-level npm setup (17 scripts, 4 unit-test suites) and a tested HTML transform that replaced manual edits to the final HTML. Recovered 15 hand edits across 4 templates back into MJML.",
+        "Cut email size by about 33% (one email from ~112 KB to ~75 KB) with minified output, keeping emails under Gmail's 102 KB clipping limit.",
+        "Traced a Mailgun rendering bug with a 30-client test matrix (24 variants) that turned the header grey in 20 of 30 email clients. The build now fixes it, and the bug was reported to the vendor.",
+        "Delivered 4 new emails and added AJO build support. Fixed Outlook 365 spacing, VML buttons and dark mode in Gmail iOS, Outlook and Yahoo."
+      ],
+      "skills": [
+        "MJML",
+        "HTML Email",
+        "Marketo",
+        "Adobe Journey Optimizer",
+        "Node.js"
+      ],
+      "notes": []
+    },
+    {
+      "name": "Roche CardioThinkLab website performance",
+      "period": {
+        "start": "February 2026",
+        "end": "March 2026"
+      },
+      "association": {
+        "org": "Hire Digital",
+        "role": "Senior Full-Stack Software Engineer"
+      },
+      "description": [
+        "Performance and deployment work on Roche's CardioThinkLab WordPress site (Roots Bedrock, Docker)."
+      ],
+      "bullets": [
+        "Improved Core Web Vitals with a YouTube click-to-load facade, Google Tag Manager delayed until interaction or consent, OneTrust deferred with its duplicate load removed, Google Fonts loaded asynchronously and cut from 5 weights to 3, expanded critical CSS and right-sized responsive images.",
+        "Fixed a silent deployment failure that left WordPress core missing after a plugin was removed upstream, and added a Docker build check that fails fast if core is absent."
+      ],
+      "skills": [
+        "WordPress",
+        "PHP",
+        "Docker",
+        "Composer",
+        "Web Performance Optimization"
+      ],
+      "notes": []
+    },
+    {
+      "name": "CapitaLand culture-recognition email",
+      "period": {
+        "start": "August 2025",
+        "end": "September 2025"
+      },
+      "association": {
+        "org": "Hire Digital",
+        "role": "Senior Full-Stack Software Engineer"
+      },
+      "description": [
+        "An email that CapitaLand staff open in Outlook as an editable draft, in English and Chinese. Co-developed with a colleague."
+      ],
+      "bullets": [
+        "Set up the repository and the first Node.js generator, which compiles an MJML template and packages it with nodemailer as an Outlook-ready EML draft with embedded images.",
+        "Merged the separate English and Chinese templates into one template driven by a translation file.",
+        "Fixed Outlook rendering with exact table column spans, a simplified decorative frame with its corner image split into four, and Unicode ballot boxes in place of checkboxes, which don't work in desktop or web Outlook."
+      ],
+      "skills": [
+        "MJML",
+        "Node.js",
+        "HTML Email",
+        "Microsoft Outlook",
+        "Email Marketing"
+      ],
+      "notes": []
+    }
+  ],
+  "education": [
+    {
+      "school": "Nanyang Technological University",
+      "credential": "Bachelor of Engineering, Computer Science",
+      "period": {
+        "start": "December 2009",
+        "end": "November 2012"
+      },
+      "bullets": [
+        "Final Year Project – Worked on a software program with intuitive user interface for a specific image processing application using C# with WPF.",
+        "Welfare Services Club – Volunteered as photographer and helper at 3 events organized for seniors and the physically challenged."
+      ]
+    },
+    {
+      "school": "Temasek Polytechnic",
+      "credential": "Diploma, Mechatronics (Aerospace option)",
+      "period": {
+        "start": "December 2006",
+        "end": "November 2009"
+      },
+      "bullets": [
+        "Diploma with Merit (Honors List enrollment for academic year 2008-09)",
+        "Director’s List awards for academic years 2006-07 and 2007-08",
+        "Overseas Community Project at Vientiane, Laos (Apr 2009) – Participated as performer (dancer) and English & IT (computer skills) trainer for high school students.",
+        "E2 Matrix peer tutoring programme (Oct 2006 – Feb 2007) – Participated and assisted as student mentor to help students score better in their weak modules."
+      ]
+    }
+  ]
+}

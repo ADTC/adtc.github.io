@@ -1,0 +1,35 @@
+---
+import type { SkillGroup } from "../lib/resume-types";
+
+interface Props {
+  groups: SkillGroup[];
+}
+
+const { groups } = Astro.props;
+---
+
+<div class="skill-groups">
+  {
+    groups.map((group) => (
+      <div class="skill-group">
+        <h3 class="skill-group-title">{group.title}</h3>
+        <dl class="skill-rows">
+          {group.rows.map((row) => (
+            <div class="skill-row">
+              <dt class="entry-dates">{row.label}</dt>
+              <dd class="entry-body">
+                <ul class="chips">
+                  {row.items.map((item) => (
+                    <li class="chip">
+                      {item.name}{item.detail && <> <span class="chip-detail">({item.detail})</span></>}
+                    </li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    ))
+  }
+</div>

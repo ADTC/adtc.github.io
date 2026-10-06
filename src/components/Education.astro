@@ -1,0 +1,28 @@
+---
+import type { Education } from "../lib/resume-types";
+import Bullets from "./Bullets.astro";
+import DateRange from "./DateRange.astro";
+
+interface Props {
+  schools: Education[];
+}
+
+const { schools } = Astro.props;
+---
+
+<ol class="schools">
+  {
+    schools.map((school) => (
+      <li class="school">
+        <div class="entry-dates">
+          <DateRange period={school.period} />
+        </div>
+        <div class="entry-body">
+          <h3 class="school-name">{school.school}</h3>
+          <p class="meta">{school.credential}</p>
+          <Bullets items={school.bullets} />
+        </div>
+      </li>
+    ))
+  }
+</ol>

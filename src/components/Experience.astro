@@ -1,0 +1,48 @@
+---
+import type { Company } from "../lib/resume-types";
+import Bullets from "./Bullets.astro";
+import DateRange from "./DateRange.astro";
+import Inline from "./Inline.astro";
+
+interface Props {
+  companies: Company[];
+}
+
+const { companies } = Astro.props;
+---
+
+<ol class="companies">
+  {
+    companies.map((company) => (
+      <li class="company">
+        <div class="company-head">
+          <h3 class="company-name">{company.name}</h3>
+          {company.duration && <p class="company-duration">{company.duration}</p>}
+        </div>
+        <ol class="roles">
+          {company.roles.map((role) => (
+            <li class="role">
+              <div class="entry-dates">
+                <DateRange period={role.period} />
+              </div>
+              <div class="entry-body">
+                <h4 class="role-title">{role.title}</h4>
+                {role.meta.map((text) => (
+                  <p class="meta">
+                    <Inline text={text} />
+                  </p>
+                ))}
+                <Bullets items={role.bullets} />
+                {role.notes.map((text) => (
+                  <p class="note">
+                    <Inline text={text} />
+                  </p>
+                ))}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </li>
+    ))
+  }
+</ol>

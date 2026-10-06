@@ -1,0 +1,11 @@
+---
+import { marked } from "marked";
+
+interface Props {
+  text: string;
+}
+
+const html = marked.parseInline(Astro.props.text, { async: false });
+---
+
+<Fragment set:html={html} />
