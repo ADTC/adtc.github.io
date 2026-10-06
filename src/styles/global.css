@@ -174,7 +174,6 @@ svg {
 .toc a {
   display: block;
   padding-block: 0.2rem;
-  border-bottom: 2px solid transparent;
   color: var(--text-muted);
   font-size: 0.75rem;
   font-weight: 600;
@@ -190,7 +189,6 @@ svg {
 }
 
 .toc a[aria-current] {
-  border-color: var(--accent);
   color: var(--accent);
 }
 
@@ -267,7 +265,6 @@ svg {
     align-items: center;
     gap: 1rem;
     padding-block: 0.45rem;
-    border: 0;
   }
 
   .toc a::before {
