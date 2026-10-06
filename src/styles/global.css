@@ -297,6 +297,18 @@ svg {
 
 /* Intro */
 
+.photo {
+  display: block;
+  box-sizing: content-box;
+  width: 6.5rem;
+  height: 6.5rem;
+  margin-bottom: 1.4rem;
+  padding: 0.25rem;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .name {
   font-family: var(--font-serif);
   font-size: clamp(3rem, 2.2rem + 3.4vw, 3.75rem);

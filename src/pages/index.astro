@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import headshot from "../assets/headshot.jpg";
 import Bullets from "../components/Bullets.astro";
 import Education from "../components/Education.astro";
 import Experience from "../components/Experience.astro";
@@ -36,11 +38,15 @@ const pageUrl = new URL("/", Astro.site).href;
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
+  "@id": pageUrl,
   url: pageUrl,
   dateModified: resume.updated,
   mainEntity: {
     "@type": "Person",
+    "@id": `${pageUrl}#person`,
     name: resume.name,
+    alternateName: site.alternateNames,
+    image: new URL(headshot.src, Astro.site).href,
     jobTitle: site.jobTitle,
     description: resume.headline,
     url: pageUrl,
@@ -49,6 +55,11 @@ const jsonLd = {
     knowsLanguage: resume.languages.map((language) => language.replace(/\s*\(.*\)$/, "")),
     knowsAbout: resume.skills.flatMap((group) => group.rows.flatMap((row) => row.items.map((item) => item.name))),
     alumniOf: resume.education.map((school) => ({ "@type": "EducationalOrganization", name: school.school })),
+    hasCredential: resume.education.map((school) => ({
+      "@type": "EducationalOccupationalCredential",
+      name: school.credential,
+      recognizedBy: { "@type": "EducationalOrganization", name: school.school },
+    })),
   },
 };
 ---
@@ -58,6 +69,7 @@ const jsonLd = {
   <div class="page">
     <div class="rail">
       <header class="intro">
+        <Image class="photo" src={headshot} alt={resume.name} width={104} densities={[1, 2]} loading="eager" />
         <h1 class="name">
           {
             resume.name.split(" ").map((word, index) => (
