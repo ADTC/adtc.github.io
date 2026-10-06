@@ -41,7 +41,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="generator" content={Astro.generator} />
     <meta name="google-site-verification" content="Jvm4NJEEzY46xVkiGkpfhDYMNBMIy4IiQWlL_H_nl2E" />
-    <Font cssVariable="--font-sans" preload />
+    <Font cssVariable="--font-sans" preload={[{ weight: 400 }]} />
     <Font cssVariable="--font-serif" preload />
     {
       jsonLd && (
