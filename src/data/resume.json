@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06",
+  "updated": "2026-10-07",
   "name": "Arundas Thulasidas Chandraleeba",
   "headline": "Senior Full-Stack Software Engineer building web platforms with TypeScript, React, Astro and Python/Django on AWS, leading migrations and incident response, and directing AI coding agents with careful human review.",
   "links": [
@@ -624,9 +624,37 @@
   ],
   "projects": [
     {
-      "name": "Singtel WanderJoy travel-deals site",
+      "name": "Manulife Singapore email platform",
       "period": {
-        "start": "June 2025",
+        "start": "September 2026",
+        "end": "October 2026"
+      },
+      "association": {
+        "org": "Hire Digital",
+        "role": "Senior Full-Stack Software Engineer (Cloud & DevOps)"
+      },
+      "description": [
+        "Email build platform for Manulife Singapore's Marketo and Adobe Journey Optimizer (AJO) campaigns. Took over the repository in September 2026."
+      ],
+      "bullets": [
+        "Modernized the MJML build pipeline with a root-level npm setup (17 scripts, 4 unit-test suites) and a tested HTML transform that replaced manual edits to the final HTML. Recovered 15 hand edits across 4 templates back into MJML.",
+        "Cut email size by about 33% (one email from ~112 KB to ~75 KB) with minified output, keeping emails under Gmail's 102 KB clipping limit.",
+        "Traced a Mailgun rendering bug with a 30-client test matrix (24 variants) that turned the header grey in 20 of 30 email clients. The build now fixes it, and the bug was reported to the vendor.",
+        "Delivered 4 new emails and added AJO build support. Fixed Outlook 365 spacing, VML buttons and dark mode in Gmail iOS, Outlook and Yahoo."
+      ],
+      "skills": [
+        "MJML",
+        "HTML Email",
+        "Marketo",
+        "Adobe Journey Optimizer",
+        "Node.js"
+      ],
+      "notes": []
+    },
+    {
+      "name": "Manulife Singapore personality quiz",
+      "period": {
+        "start": "March 2026",
         "end": "September 2026"
       },
       "association": {
@@ -634,20 +662,18 @@
         "role": "Senior Full-Stack Software Engineer"
       },
       "description": [
-        "Travel-deals site for Singtel and 8 partner telcos in 8 countries, built with Astro server-side rendering and Vue 3 on Vercel. Primary developer."
+        "Mobile-first financial-personality quiz for Manulife Singapore, built with Astro. Sole developer."
       ],
       "bullets": [
-        "Fixed a production personalization bug where visitors saw 152 deals instead of 127, by moving telco and country detection into server-side rendering with Vercel geolocation and removing duplicate detection from 4 components. Also enabled edge image optimization.",
-        "Expanded the site to 5 languages, adding Thai, Indonesian and Japanese in about 4 weeks, with cultural rules such as Buddhist Era years and Japanese honorifics.",
-        "Built an HMAC-SHA256-signed voucher-token API for Telkomsel, with a nonce and inputs resolved on the server.",
-        "Added technical SEO (sitemap, canonical and hreflang tags, JSON-LD, FAQ schema) and GA4 and Google Tag Manager event tracking. Reconciled a full catalogue refresh of 131 source rows against 195 existing deal files."
+        "Built 10 questions with 5 options each, 5 personality archetypes and 35 static routes. Scoring runs privately in the browser, with a Fisher–Yates shuffle and an ordered tie-break.",
+        "Added 15 shareable result pages with Open Graph metadata, sharing through the Web Share and Clipboard APIs, and a debug build for QA."
       ],
       "skills": [
         "Astro",
-        "Vue.js",
-        "Vercel",
-        "TypeScript",
-        "Search Engine Optimization (SEO)"
+        "JavaScript",
+        "HTML5",
+        "CSS",
+        "Responsive Web Design"
       ],
       "notes": []
     },
@@ -708,36 +734,9 @@
       "notes": []
     },
     {
-      "name": "Singtel Insurance financial-planning simulators",
+      "name": "Singtel WanderJoy travel-deals site",
       "period": {
-        "start": "December 2024",
-        "end": "January 2026"
-      },
-      "association": {
-        "org": "Hire Digital",
-        "role": "Full-Stack Software Engineer"
-      },
-      "description": [
-        "Five financial-planning simulators and quizzes embedded on singtel.com, built in React and TypeScript. Top contributor."
-      ],
-      "bullets": [
-        "Built the fourth and fifth tools: the Education Planning quiz, and the Mortgage Planning calculator with a pie-chart breakdown that expands on hover or tap, auto-sizing inputs with stepper buttons, and inputs saved in URL parameters.",
-        "Led the conversion from Next.js to plain React (Create React App, React Router, CSS Modules), removing Tailwind, Jotai and other dependencies so the app could share a page and styles with the client's existing codebase.",
-        "Submitted answers to Singtel's API, tracked answers and steps in Google Tag Manager, applied the client's UAT changes, and turned on strict TypeScript and ESLint."
-      ],
-      "skills": [
-        "React.js",
-        "TypeScript",
-        "Chart.js",
-        "CSS Modules",
-        "Google Tag Manager"
-      ],
-      "notes": []
-    },
-    {
-      "name": "Manulife Singapore personality quiz",
-      "period": {
-        "start": "March 2026",
+        "start": "June 2025",
         "end": "September 2026"
       },
       "association": {
@@ -745,46 +744,20 @@
         "role": "Senior Full-Stack Software Engineer"
       },
       "description": [
-        "Mobile-first financial-personality quiz for Manulife Singapore, built with Astro. Sole developer."
+        "Travel-deals site for Singtel and 8 partner telcos in 8 countries, built with Astro server-side rendering and Vue 3 on Vercel. Primary developer."
       ],
       "bullets": [
-        "Built 10 questions with 5 options each, 5 personality archetypes and 35 static routes. Scoring runs privately in the browser, with a Fisher–Yates shuffle and an ordered tie-break.",
-        "Added 15 shareable result pages with Open Graph metadata, sharing through the Web Share and Clipboard APIs, and a debug build for QA."
+        "Fixed a production personalization bug where visitors saw 152 deals instead of 127, by moving telco and country detection into server-side rendering with Vercel geolocation and removing duplicate detection from 4 components. Also enabled edge image optimization.",
+        "Expanded the site to 5 languages, adding Thai, Indonesian and Japanese in about 4 weeks, with cultural rules such as Buddhist Era years and Japanese honorifics.",
+        "Built an HMAC-SHA256-signed voucher-token API for Telkomsel, with a nonce and inputs resolved on the server.",
+        "Added technical SEO (sitemap, canonical and hreflang tags, JSON-LD, FAQ schema) and GA4 and Google Tag Manager event tracking. Reconciled a full catalogue refresh of 131 source rows against 195 existing deal files."
       ],
       "skills": [
         "Astro",
-        "JavaScript",
-        "HTML5",
-        "CSS",
-        "Responsive Web Design"
-      ],
-      "notes": []
-    },
-    {
-      "name": "Manulife Singapore email platform",
-      "period": {
-        "start": "September 2026",
-        "end": "October 2026"
-      },
-      "association": {
-        "org": "Hire Digital",
-        "role": "Senior Full-Stack Software Engineer (Cloud & DevOps)"
-      },
-      "description": [
-        "Email build platform for Manulife Singapore's Marketo and Adobe Journey Optimizer (AJO) campaigns. Took over the repository in September 2026."
-      ],
-      "bullets": [
-        "Modernized the MJML build pipeline with a root-level npm setup (17 scripts, 4 unit-test suites) and a tested HTML transform that replaced manual edits to the final HTML. Recovered 15 hand edits across 4 templates back into MJML.",
-        "Cut email size by about 33% (one email from ~112 KB to ~75 KB) with minified output, keeping emails under Gmail's 102 KB clipping limit.",
-        "Traced a Mailgun rendering bug with a 30-client test matrix (24 variants) that turned the header grey in 20 of 30 email clients. The build now fixes it, and the bug was reported to the vendor.",
-        "Delivered 4 new emails and added AJO build support. Fixed Outlook 365 spacing, VML buttons and dark mode in Gmail iOS, Outlook and Yahoo."
-      ],
-      "skills": [
-        "MJML",
-        "HTML Email",
-        "Marketo",
-        "Adobe Journey Optimizer",
-        "Node.js"
+        "Vue.js",
+        "Vercel",
+        "TypeScript",
+        "Search Engine Optimization (SEO)"
       ],
       "notes": []
     },
@@ -811,6 +784,33 @@
         "Docker",
         "Composer",
         "Web Performance Optimization"
+      ],
+      "notes": []
+    },
+    {
+      "name": "Singtel Insurance financial-planning simulators",
+      "period": {
+        "start": "December 2024",
+        "end": "January 2026"
+      },
+      "association": {
+        "org": "Hire Digital",
+        "role": "Full-Stack Software Engineer"
+      },
+      "description": [
+        "Five financial-planning simulators and quizzes embedded on singtel.com, built in React and TypeScript. Top contributor."
+      ],
+      "bullets": [
+        "Built the fourth and fifth tools: the Education Planning quiz, and the Mortgage Planning calculator with a pie-chart breakdown that expands on hover or tap, auto-sizing inputs with stepper buttons, and inputs saved in URL parameters.",
+        "Led the conversion from Next.js to plain React (Create React App, React Router, CSS Modules), removing Tailwind, Jotai and other dependencies so the app could share a page and styles with the client's existing codebase.",
+        "Submitted answers to Singtel's API, tracked answers and steps in Google Tag Manager, applied the client's UAT changes, and turned on strict TypeScript and ESLint."
+      ],
+      "skills": [
+        "React.js",
+        "TypeScript",
+        "Chart.js",
+        "CSS Modules",
+        "Google Tag Manager"
       ],
       "notes": []
     },
