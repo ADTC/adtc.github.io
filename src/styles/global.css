@@ -148,7 +148,6 @@ svg {
 .ask {
   display: flex;
   height: max(33.333svh, 20rem);
-  border-bottom: 1px solid var(--line);
   background: radial-gradient(70% 100% at 50% 0%, var(--accent-soft), transparent);
   transition: height 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
@@ -161,7 +160,7 @@ svg {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 0.875rem;
   width: 100%;
   max-width: calc(46rem + 2 * var(--pad));
   min-height: 0;
@@ -172,6 +171,7 @@ svg {
 .ask-head {
   display: grid;
   gap: 0.6rem;
+  margin-bottom: 0.875rem;
   text-align: center;
 }
 
@@ -185,11 +185,6 @@ svg {
 
 .ask-title span {
   color: var(--accent);
-}
-
-.ask-lede {
-  color: var(--text-muted);
-  font-size: 0.9375rem;
 }
 
 .ask-composer {
@@ -331,10 +326,15 @@ svg {
     color 0.15s ease;
 }
 
-.ask-suggestions button:hover,
+.ask-suggestions button:enabled:hover,
 .ask-reset:hover {
   border-color: var(--accent);
   color: var(--accent-strong);
+}
+
+.ask-suggestions button:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 .ask-log {
@@ -395,20 +395,20 @@ svg {
   font-size: 0.875rem;
 }
 
-.ask[data-state="idle"] :is(.ask-log, .ask-reset),
-.ask[data-state="active"] :is(.ask-lede, .ask-suggestions) {
+.ask[data-state="idle"] :is(.ask-log, .ask-reset) {
   display: none;
 }
 
 .ask[data-state="active"] .ask-inner {
   justify-content: flex-start;
-  gap: 1rem;
+  gap: 0.75rem;
   padding-block: 1.25rem 1rem;
 }
 
 .ask[data-state="active"] .ask-head {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
+  margin-bottom: 0;
   text-align: left;
 }
 

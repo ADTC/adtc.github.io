@@ -100,6 +100,7 @@ Spending shows in the dashboard under **AI Gateway** for ADTC's projects.
 
 - Visitors' questions go from the function to AI Gateway and then to Google. Vercel says AI Gateway neither trains on nor keeps prompts, and AI Gateway's model catalog marks Gemini 2.5 Flash-Lite as not training on prompts with any of its providers.
 - The function doesn't store conversations. Vercel's runtime logs record each request and AI Gateway's error messages, but not the questions.
+- The page keeps the current conversation in the browser's session storage, so reloading the tab shows it again. **New chat** or closing the tab clears it.
 - The model only sees the public résumé. Its rules tell it never to guess contact details, and the résumé has none.
 
 ## Local development
@@ -128,6 +129,8 @@ PUBLIC_CHAT_API=http://localhost:3000/api/chat npx astro dev --background
 | Assistant rules | `chat-api/lib/instructions.ts` | |
 
 To change the model, pick one from the [free-tier model list](https://vercel.com/ai-gateway/models?freeTier=true). Set `CHAT_MODEL` under the project's **Settings → Environment Variables** for Production, then redeploy. Pricier models use up the credit faster. For example, Gemini 3.1 Flash-Lite costs about 2.5 times as much per question.
+
+The note under the prompt box says questions "aren't used for training". That holds for Gemini 2.5 Flash-Lite, which AI Gateway's model catalog lists as `no_training: all`. Before switching models, check the new model's entry at `https://ai-gateway.vercel.sh/v1/models`, and change the note in `src/components/Ask.astro` if it doesn't say `all`.
 
 ## Troubleshooting
 
