@@ -7,6 +7,7 @@ The "Ask about my work" section at the top of the résumé page is a chat assist
 1. The site stays a static Astro build on GitHub Pages. `src/components/Ask.astro` renders the chat section and sends each question, with the earlier turns of the conversation, to `https://adtc-resume-chat.vercel.app/api/chat`.
 2. That endpoint is the Vercel project **adtc-resume-chat** in the Hobby team **ADTC's projects** (`adtcs-projects`). Its code is in `chat-api/`.
 3. The function checks the request, adds the assistant's rules and the full résumé text, and streams the model's answer back as plain text.
+   The page formats a small Markdown subset (bold, italics, bulleted and numbered lists, inline code and links) by building page elements directly, never inserting HTML, so an answer can't inject markup.
 4. The function signs in to AI Gateway with the OIDC token Vercel gives every deployment, so there are no API keys to manage or leak.
 
 The résumé text is built from `src/data/resume.json` and `src/site.ts` when the function is built, so the function has to be redeployed when the résumé changes. Every push to `master` does that automatically.
@@ -100,7 +101,7 @@ Spending shows in the dashboard under **AI Gateway** for ADTC's projects.
 
 - Visitors' questions go from the function to AI Gateway and then to Google. Vercel says AI Gateway neither trains on nor keeps prompts, and AI Gateway's model catalog marks Gemini 2.5 Flash-Lite as not training on prompts with any of its providers.
 - The function doesn't store conversations. Vercel's runtime logs record each request and AI Gateway's error messages, but not the questions.
-- The page keeps the current conversation in the browser's session storage, so reloading the tab shows it again. **New chat** or closing the tab clears it.
+- The page keeps the current conversation in the browser's session storage, so reloading the tab shows it again. Suggested questions that were already asked stay hidden. **New chat** or closing the tab clears the conversation and brings all the suggestions back.
 - The model only sees the public résumé. Its rules tell it never to guess contact details, and the résumé has none.
 
 ## Local development

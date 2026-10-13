@@ -159,7 +159,7 @@ svg {
 .ask-inner {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 0.875rem;
   width: 100%;
   max-width: calc(46rem + 2 * var(--pad));
@@ -305,6 +305,10 @@ svg {
   }
 }
 
+.ask-suggestions[hidden] {
+  display: none;
+}
+
 .ask-suggestions li {
   flex: none;
 }
@@ -366,6 +370,55 @@ svg {
 .ask-message[data-role="assistant"] {
   position: relative;
   padding-left: 1.6rem;
+  white-space: normal;
+}
+
+.ask-message[data-role="assistant"] > * + * {
+  margin-top: 0.75rem;
+}
+
+.ask-message li {
+  position: relative;
+  padding-left: 1.15rem;
+}
+
+.ask-message li + li {
+  margin-top: 0.35rem;
+}
+
+.ask-message ul > li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.ask-message ol {
+  padding-left: 1.15rem;
+  list-style: decimal;
+}
+
+.ask-message ol > li {
+  padding-left: 0.25rem;
+}
+
+.ask-message ol > li::marker {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.ask-message strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.ask-message code {
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.3rem;
+  background: var(--chip);
+  font-family: var(--font-mono);
+  font-size: 0.875em;
 }
 
 .ask-message[data-role="assistant"]::before {

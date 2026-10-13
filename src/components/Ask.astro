@@ -95,6 +95,68 @@ const suggestions = [
     return [];
   };
 
+  // The Markdown subset the assistant is told to use. Answers become DOM nodes, never parsed HTML,
+  // so they can't inject markup.
+  const INLINE =
+    /\*\*(?=\S)(.+?)(?<=\S)\*\*|(?<!\w)__(?=\S)(.+?)(?<=\S)__(?!\w)|(?<![\w*])\*(?=[^\s*])(.+?)(?<=[^\s*])\*(?![\w*])|(?<!\w)_(?=[^\s_])(.+?)(?<=[^\s_])_(?!\w)|`([^`\n]+)`|\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/[^\s<>()]*[^\s<>().,;:!?'"])/g;
+  const LIST_ITEM = /^\s*(?:([-*+])|(\d+)[.)])\s+(.*)/;
+  const HEADING = /^#{1,6}\s+(.*)/;
+
+  const renderInline = (parent: HTMLElement, text: string) => {
+    let last = 0;
+    for (const match of text.matchAll(INLINE)) {
+      parent.append(text.slice(last, match.index));
+      const [, bold, boldAlt, italic, italicAlt, code, linkText, linkUrl, bareUrl] = match;
+      let node: HTMLElement;
+      if (bold ?? boldAlt) {
+        node = document.createElement("strong");
+        renderInline(node, bold ?? boldAlt);
+      } else if (italic ?? italicAlt) {
+        node = document.createElement("em");
+        renderInline(node, italic ?? italicAlt);
+      } else if (code) {
+        node = document.createElement("code");
+        node.textContent = code;
+      } else {
+        const link = document.createElement("a");
+        link.href = linkUrl ?? bareUrl;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = linkText ?? bareUrl;
+        node = link;
+      }
+      parent.append(node);
+      last = match.index + match[0].length;
+    }
+    parent.append(text.slice(last));
+  };
+
+  const render = (target: HTMLElement, text: string) => {
+    const blocks: HTMLElement[] = [];
+    let open: HTMLElement | undefined;
+    for (const line of text.split("\n")) {
+      const item = LIST_ITEM.exec(line);
+      if (item) {
+        const tag = item[1] ? "UL" : "OL";
+        if (open?.tagName !== tag) {
+          blocks.push((open = document.createElement(tag)));
+          if (item[2] && item[2] !== "1") open.setAttribute("start", item[2]);
+        }
+        const entry = document.createElement("li");
+        renderInline(entry, item[3]);
+        open.append(entry);
+      } else if (line.trim()) {
+        if (open?.tagName === "P") open.append(document.createElement("br"));
+        else blocks.push((open = document.createElement("p")));
+        const heading = HEADING.exec(line);
+        renderInline(open, heading ? `**${heading[1]}**` : line);
+      } else {
+        open = undefined;
+      }
+    }
+    target.replaceChildren(...blocks);
+  };
+
   const root = document.querySelector<HTMLElement>(".ask");
   if (root) {
     const api = root.dataset.api!;
@@ -102,7 +164,8 @@ const suggestions = [
     const input = root.querySelector("textarea")!;
     const send = root.querySelector<HTMLButtonElement>(".ask-send")!;
     const log = root.querySelector<HTMLElement>(".ask-log")!;
-    const suggestions = root.querySelectorAll<HTMLButtonElement>(".ask-suggestions button");
+    const list = root.querySelector<HTMLElement>(".ask-suggestions")!;
+    const suggestions = list.querySelectorAll<HTMLButtonElement>("button");
     const conversation = load();
     let controller: AbortController | undefined;
     let generation = 0;
@@ -126,18 +189,33 @@ const suggestions = [
       update();
     };
 
+    const updateSuggestions = () => {
+      const asked = new Set(conversation.filter(({ role }) => role === "user").map(({ content }) => content));
+      let remaining = 0;
+      for (const button of suggestions) {
+        const used = asked.has(button.dataset.question!);
+        button.parentElement!.hidden = used;
+        if (!used) remaining++;
+      }
+      list.hidden = remaining === 0;
+    };
+
     const resize = () => {
       input.style.height = "auto";
       input.style.height = `${input.scrollHeight}px`;
     };
 
+    const scrollToEnd = () => {
+      log.scrollTop = log.scrollHeight;
+    };
+
     const append = (role: Message["role"] | "note", text: string) => {
-      const message = document.createElement("p");
+      const message = document.createElement(role === "assistant" ? "div" : "p");
       message.className = "ask-message";
       message.dataset.role = role;
-      message.textContent = text;
+      if (role === "assistant") render(message, text);
+      else message.textContent = text;
       log.append(message);
-      log.scrollTop = log.scrollHeight;
       return message;
     };
 
@@ -152,7 +230,9 @@ const suggestions = [
       resize();
       append("user", question);
       const answer = append("assistant", "");
+      scrollToEnd();
       conversation.push({ role: "user", content: question });
+      updateSuggestions();
 
       const own = generation;
       const { signal } = (controller = new AbortController());
@@ -160,6 +240,14 @@ const suggestions = [
 
       let content = "";
       let problem: string | undefined;
+      // Chunks can arrive faster than frames, so render at most once per frame.
+      let frame = 0;
+      const paint = () => {
+        frame = 0;
+        const following = log.scrollHeight - log.scrollTop - log.clientHeight < 48;
+        render(answer, content);
+        if (following) scrollToEnd();
+      };
       try {
         const response = await fetch(api, {
           method: "POST",
@@ -172,25 +260,29 @@ const suggestions = [
         } else {
           const reader = response.body.pipeThrough(new TextDecoderStream()).getReader();
           for (let chunk = await reader.read(); !chunk.done; chunk = await reader.read()) {
-            const following = log.scrollHeight - log.scrollTop - log.clientHeight < 48;
             content += chunk.value;
-            answer.textContent = content;
-            if (following) log.scrollTop = log.scrollHeight;
+            frame ||= requestAnimationFrame(paint);
           }
           if (!content) problem = UNAVAILABLE;
         }
       } catch {
         if (!signal.aborted) problem = UNAVAILABLE;
       }
+      cancelAnimationFrame(frame);
       if (own !== generation) return;
 
       if (content) {
+        paint();
         conversation.push({ role: "assistant", content });
       } else {
         conversation.pop();
         answer.remove();
       }
-      if (problem || !content) append("note", problem ?? "Stopped.");
+      if (problem || !content) {
+        append("note", problem ?? "Stopped.");
+        scrollToEnd();
+      }
+      updateSuggestions();
       save();
       controller = undefined;
       setBusy(false);
@@ -203,6 +295,7 @@ const suggestions = [
       conversation.length = 0;
       save();
       log.replaceChildren();
+      updateSuggestions();
       root.dataset.state = "idle";
       setBusy(false);
       input.focus();
@@ -210,6 +303,8 @@ const suggestions = [
 
     for (const { role, content } of conversation) append(role, content);
     root.dataset.state = conversation.length > 0 ? "active" : "idle";
+    scrollToEnd();
+    updateSuggestions();
     save();
 
     form.addEventListener("submit", (event) => {
@@ -237,7 +332,13 @@ const suggestions = [
 
     // An empty box sizes itself to the placeholder, which wraps differently once web fonts load.
     resize();
-    addEventListener("resize", resize);
+    let resizing = 0;
+    addEventListener("resize", () => {
+      resizing ||= requestAnimationFrame(() => {
+        resizing = 0;
+        resize();
+      });
+    });
     void document.fonts.ready.then(resize);
   }
 </script>
