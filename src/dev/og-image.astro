@@ -17,6 +17,14 @@ import "../styles/global.css";
   </head>
   <body>
     <div class="card">
+      <div class="card-ask">
+        <p class="card-placeholder">Ask anything about my experience</p>
+        <span class="card-send">
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"></path>
+          </svg>
+        </span>
+      </div>
       <div class="text">
         <h1 class="card-name">
           {data.name.split(" ").map((word) => <span>{word}</span>)}
@@ -40,19 +48,66 @@ import "../styles/global.css";
 
 <style>
   .card {
+    --ring: calc(0.6rem + 2px);
+
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto minmax(0, 1fr);
     align-items: center;
-    gap: 4rem;
+    gap: 2.25rem 4rem;
     width: 1200px;
     height: 630px;
-    padding-inline: 5.5rem 5rem;
+    padding: 2.75rem 5.5rem 2.5rem;
     overflow: hidden;
+    background: radial-gradient(60% 60% at 50% 0%, var(--accent-soft), transparent);
+  }
+
+  .card-ask {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-self: center;
+    align-items: center;
+    gap: 1rem;
+    width: 48rem;
+    padding: 0.75rem 0.75rem 0.75rem 2rem;
+    border: 1.5px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--surface);
+    box-shadow: 0 20px 44px -24px oklch(20% 0.02 262 / 0.45);
+  }
+
+  .card-placeholder {
+    color: var(--text-muted);
+    font-size: 1.625rem;
+    white-space: nowrap;
+  }
+
+  .card-send {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 3.25rem;
+    height: 3.25rem;
+    margin-left: auto;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    opacity: 0.35;
+  }
+
+  .card-send svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.75;
   }
 
   .card-name {
     font-family: var(--font-serif);
-    font-size: 7rem;
+    font-size: 6.25rem;
     font-weight: 400;
     letter-spacing: -0.01em;
     line-height: 0.92;
@@ -67,30 +122,30 @@ import "../styles/global.css";
   }
 
   .card-title {
-    margin-top: 2rem;
+    margin-top: 1.6rem;
     color: var(--text-muted);
-    font-size: 2.125rem;
+    font-size: 1.875rem;
     line-height: 1.3;
   }
 
   .card-facts {
     display: flex;
     align-items: center;
-    gap: 1.75rem;
-    margin-top: 1.75rem;
+    gap: 1.5rem;
+    margin-top: 1.4rem;
     color: var(--text-muted);
-    font-size: 1.5rem;
+    font-size: 1.375rem;
   }
 
   .card-facts li {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.55rem;
   }
 
   .card-facts svg {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 1.45rem;
+    height: 1.45rem;
     fill: none;
     stroke: currentColor;
     stroke-linejoin: round;
@@ -98,20 +153,23 @@ import "../styles/global.css";
   }
 
   .card-url {
-    padding: 0.4rem 1.1rem;
+    padding: 0.35rem 1rem;
     border: 1px solid var(--line-strong);
     border-radius: 999px;
     color: var(--text);
     font-weight: 500;
   }
 
+  /* The ring spans from just above the "A" to just below the URL pill. */
   .card-photo {
-    width: 25rem;
-    height: 25rem;
+    width: 24.125rem;
+    height: 24.125rem;
+    margin-top: 0.5rem;
+    margin-right: var(--ring);
     border-radius: 50%;
     object-fit: cover;
     box-shadow:
       0 0 0 0.6rem var(--bg),
-      0 0 0 calc(0.6rem + 2px) var(--accent);
+      0 0 0 var(--ring) var(--accent);
   }
 </style>
