@@ -742,9 +742,6 @@ svg {
 }
 
 .section-title {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
   margin-bottom: 2.5rem;
   color: var(--accent);
   font-family: var(--font-serif);
@@ -752,13 +749,6 @@ svg {
   font-weight: 400;
   letter-spacing: -0.005em;
   line-height: 1;
-}
-
-.section-title::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--line);
 }
 
 .about p {
@@ -1064,8 +1054,6 @@ svg {
 
 .colophon {
   margin-top: clamp(4.5rem, 10vw, 7.5rem);
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--line);
   color: var(--text-muted);
   font-size: 0.8125rem;
 }
