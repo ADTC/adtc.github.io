@@ -11,6 +11,7 @@
   --accent-strong: oklch(49% 0.14 38);
   --accent-soft: oklch(93% 0.035 50);
   --chip: oklch(93% 0.01 80);
+  --surface: oklch(99.4% 0.004 80);
 
   --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   --pad: 1.25rem;
@@ -30,6 +31,7 @@
     --accent-strong: oklch(79% 0.11 55);
     --accent-soft: oklch(30% 0.05 45);
     --chip: oklch(25% 0.016 262);
+    --surface: oklch(22.5% 0.016 262);
   }
 }
 
@@ -139,6 +141,298 @@ svg {
 
 .skip-link:focus {
   transform: none;
+}
+
+/* Ask */
+
+.ask {
+  display: flex;
+  height: max(33.333svh, 20rem);
+  border-bottom: 1px solid var(--line);
+  background: radial-gradient(70% 100% at 50% 0%, var(--accent-soft), transparent);
+  transition: height 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.ask[data-state="active"] {
+  height: max(90svh, 26rem);
+}
+
+.ask-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: calc(46rem + 2 * var(--pad));
+  min-height: 0;
+  margin-inline: auto;
+  padding: 2rem var(--pad);
+}
+
+.ask-head {
+  display: grid;
+  gap: 0.6rem;
+  text-align: center;
+}
+
+.ask-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 1.9rem + 1.5vw, 2.85rem);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 1;
+}
+
+.ask-title span {
+  color: var(--accent);
+}
+
+.ask-lede {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.ask-composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 1.25rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 1.75rem;
+  background: var(--surface);
+  box-shadow: 0 12px 32px -18px oklch(20% 0.02 262 / 0.35);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.ask-composer:focus-within {
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 3px var(--accent-soft),
+    0 12px 32px -18px oklch(20% 0.02 262 / 0.35);
+}
+
+.ask-composer textarea {
+  flex: 1;
+  min-width: 0;
+  max-height: 10rem;
+  padding: 0.4rem 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  line-height: 1.5;
+  resize: none;
+}
+
+.ask-composer textarea:focus-visible {
+  outline: none;
+}
+
+.ask-composer textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.ask-send {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.ask-send:hover {
+  background: var(--accent-strong);
+}
+
+.ask-send:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.ask-send svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.75;
+}
+
+.ask-send rect {
+  fill: currentColor;
+  stroke: none;
+}
+
+.ask-icon-stop,
+.ask[data-busy] .ask-icon-send {
+  display: none;
+}
+
+.ask[data-busy] .ask-icon-stop {
+  display: block;
+}
+
+.ask-note {
+  margin-top: 0.6rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.ask-suggestions {
+  display: flex;
+  justify-content: flex-start;
+  justify-content: safe center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  margin-inline: calc(-1 * var(--pad));
+  padding-inline: var(--pad);
+  scrollbar-width: none;
+}
+
+@media (min-width: 40rem) {
+  .ask-suggestions {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: visible;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+}
+
+.ask-suggestions li {
+  flex: none;
+}
+
+.ask-suggestions button,
+.ask-reset {
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.ask-suggestions button:hover,
+.ask-reset:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
+.ask-log {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-block: 0.5rem;
+  scrollbar-width: thin;
+}
+
+.ask-message {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.ask-message[data-role="user"] {
+  align-self: flex-end;
+  max-width: 85%;
+  padding: 0.55rem 1rem;
+  border-radius: 1.25rem 1.25rem 0.35rem;
+  background: var(--chip);
+  color: var(--text);
+}
+
+.ask-message[data-role="assistant"] {
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+.ask-message[data-role="assistant"]::before {
+  content: "";
+  position: absolute;
+  top: 0.45rem;
+  left: 0;
+  width: 0.65rem;
+  height: 0.65rem;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+}
+
+.ask[data-busy] .ask-message[data-role="assistant"]:last-child::before {
+  background: var(--accent);
+}
+
+.ask-message[data-role="assistant"]:empty::after {
+  content: "Thinking…";
+  color: var(--text-muted);
+}
+
+.ask-message[data-role="note"] {
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--line-strong);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.ask[data-state="idle"] :is(.ask-log, .ask-reset),
+.ask[data-state="active"] :is(.ask-lede, .ask-suggestions) {
+  display: none;
+}
+
+.ask[data-state="active"] .ask-inner {
+  justify-content: flex-start;
+  gap: 1rem;
+  padding-block: 1.25rem 1rem;
+}
+
+.ask[data-state="active"] .ask-head {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  text-align: left;
+}
+
+.ask[data-state="active"] .ask-title {
+  font-size: 1.75rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ask[data-busy] .ask-message[data-role="assistant"]:last-child::before {
+    animation: ask-pulse 0.9s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes ask-pulse {
+  from {
+    opacity: 0.4;
+    transform: scale(0.7);
+  }
+}
+
+@media (scripting: none) {
+  .ask {
+    display: none;
+  }
 }
 
 /* Page layout */
@@ -788,6 +1082,7 @@ svg {
   }
 
   .skip-link,
+  .ask,
   .toc,
   .links svg {
     display: none;

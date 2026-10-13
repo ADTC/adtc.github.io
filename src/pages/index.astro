@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import headshot from "../assets/headshot.jpg";
+import Ask from "../components/Ask.astro";
 import Bullets from "../components/Bullets.astro";
 import Education from "../components/Education.astro";
 import Experience from "../components/Experience.astro";
@@ -66,6 +67,7 @@ const jsonLd = {
 
 <Base title={title} description={resume.headline} jsonLd={jsonLd}>
   <a class="skip-link" href="#content">Skip to content</a>
+  <Ask />
   <div class="page">
     <div class="rail">
       <header class="intro">

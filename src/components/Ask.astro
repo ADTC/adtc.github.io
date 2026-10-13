@@ -1,0 +1,198 @@
+---
+import data from "../data/resume.json";
+import { site } from "../site";
+
+const api: string = import.meta.env.PUBLIC_CHAT_API ?? site.chatApi;
+const firstName = data.name.split(" ")[0];
+const suggestions = [
+  { label: "Career summary", question: `Give me a quick summary of ${firstName}'s career.` },
+  { label: "Strongest skills", question: `Which technologies is ${firstName} strongest in?` },
+  { label: "Recent projects", question: `What has ${firstName} worked on recently?` },
+  { label: "AI coding agents", question: `How does ${firstName} work with AI coding agents?` },
+];
+---
+
+{
+  api && (
+    <section class="ask" aria-labelledby="ask-title" data-api={api} data-state="idle">
+      <div class="ask-inner">
+        <header class="ask-head">
+          <h2 id="ask-title" class="ask-title">
+            <span>Ask</span> about my work
+          </h2>
+          <p class="ask-lede">An AI assistant answers from this résumé.</p>
+          <button type="button" class="ask-reset">
+            New chat
+          </button>
+        </header>
+        <div class="ask-log" role="log" aria-label="Conversation" />
+        <form class="ask-form">
+          <div class="ask-composer">
+            <label for="ask-input" class="visually-hidden">
+              Your question
+            </label>
+            <textarea
+              id="ask-input"
+              rows="1"
+              maxlength="500"
+              enterkeyhint="send"
+              placeholder="Ask anything about my experience"
+            />
+            <button type="submit" class="ask-send" aria-label="Send question" disabled>
+              <svg class="ask-icon-send" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" />
+              </svg>
+              <svg class="ask-icon-stop" viewBox="0 0 16 16" aria-hidden="true">
+                <rect x="4.5" y="4.5" width="7" height="7" rx="1.5" />
+              </svg>
+            </button>
+          </div>
+          <p class="ask-note">Answers are AI-generated and can be wrong.</p>
+        </form>
+        <ul class="ask-suggestions" aria-label="Suggested questions">
+          {suggestions.map(({ label, question }) => (
+            <li>
+              <button type="button" data-question={question}>
+                {label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+<script>
+  // Keep in sync with the limits in chat-api/api/chat.ts.
+  const MAX_MESSAGES = 11;
+
+  const RATE_LIMITED = "That's a lot of questions at once. Please wait a few minutes and try again.";
+  const UNAVAILABLE = "The assistant isn't available right now. Everything it knows is in the résumé below.";
+
+  const root = document.querySelector<HTMLElement>(".ask");
+  if (root) {
+    const api = root.dataset.api!;
+    const form = root.querySelector("form")!;
+    const input = root.querySelector("textarea")!;
+    const send = root.querySelector<HTMLButtonElement>(".ask-send")!;
+    const log = root.querySelector<HTMLElement>(".ask-log")!;
+    const conversation: { role: "user" | "assistant"; content: string }[] = [];
+    let controller: AbortController | undefined;
+    let generation = 0;
+
+    const update = () => {
+      send.disabled = !controller && input.value.trim() === "";
+      send.setAttribute("aria-label", controller ? "Stop answering" : "Send question");
+    };
+
+    const setBusy = (busy: boolean) => {
+      root.toggleAttribute("data-busy", busy);
+      log.setAttribute("aria-busy", String(busy));
+      update();
+    };
+
+    const resize = () => {
+      input.style.height = "auto";
+      input.style.height = `${input.scrollHeight}px`;
+    };
+
+    const append = (role: "user" | "assistant" | "note", text: string) => {
+      const message = document.createElement("p");
+      message.className = "ask-message";
+      message.dataset.role = role;
+      message.textContent = text;
+      log.append(message);
+      log.scrollTop = log.scrollHeight;
+      return message;
+    };
+
+    const ask = async (text: string) => {
+      const question = text.trim();
+      if (!question || controller) return;
+      if (root.dataset.state !== "active") {
+        root.dataset.state = "active";
+        scrollTo({ top: 0 });
+      }
+      input.value = "";
+      resize();
+      append("user", question);
+      const answer = append("assistant", "");
+      conversation.push({ role: "user", content: question });
+
+      const own = generation;
+      const { signal } = (controller = new AbortController());
+      setBusy(true);
+
+      let content = "";
+      let problem: string | undefined;
+      try {
+        const response = await fetch(api, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: conversation.slice(-MAX_MESSAGES) }),
+          signal,
+        });
+        if (!response.ok || !response.body) {
+          problem = response.status === 429 ? RATE_LIMITED : UNAVAILABLE;
+        } else {
+          const reader = response.body.pipeThrough(new TextDecoderStream()).getReader();
+          for (let chunk = await reader.read(); !chunk.done; chunk = await reader.read()) {
+            const following = log.scrollHeight - log.scrollTop - log.clientHeight < 48;
+            content += chunk.value;
+            answer.textContent = content;
+            if (following) log.scrollTop = log.scrollHeight;
+          }
+          if (!content) problem = UNAVAILABLE;
+        }
+      } catch {
+        if (!signal.aborted) problem = UNAVAILABLE;
+      }
+      if (own !== generation) return;
+
+      if (content) {
+        conversation.push({ role: "assistant", content });
+      } else {
+        conversation.pop();
+        answer.remove();
+      }
+      if (problem || !content) append("note", problem ?? "Stopped.");
+      controller = undefined;
+      setBusy(false);
+    };
+
+    const reset = () => {
+      generation++;
+      controller?.abort();
+      controller = undefined;
+      conversation.length = 0;
+      log.replaceChildren();
+      root.dataset.state = "idle";
+      setBusy(false);
+      input.focus();
+    };
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (controller) controller.abort();
+      else void ask(input.value);
+    });
+    input.addEventListener("input", () => {
+      resize();
+      update();
+    });
+    input.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" || event.shiftKey || event.isComposing) return;
+      event.preventDefault();
+      void ask(input.value);
+    });
+    root.querySelector(".ask-reset")!.addEventListener("click", reset);
+    for (const button of root.querySelectorAll<HTMLButtonElement>(".ask-suggestions button")) {
+      button.addEventListener("click", () => {
+        void ask(button.dataset.question!);
+        // Focusing on touch screens would pop up the keyboard over the answer.
+        if (matchMedia("(hover: hover)").matches) input.focus();
+      });
+    }
+  }
+</script>
