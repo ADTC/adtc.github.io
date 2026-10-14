@@ -322,6 +322,11 @@ const suggestions = [
       void ask(input.value);
     });
     root.querySelector(".ask-reset")!.addEventListener("click", reset);
+    // Touch has no hover, so a tap stands in for it until the next tap elsewhere. A pan ends in
+    // pointercancel instead of pointerup, so scrolling past doesn't count.
+    document.addEventListener("pointerup", (event) => {
+      if (event.pointerType !== "mouse") root.toggleAttribute("data-touched", root.contains(event.target as Node));
+    });
     for (const button of suggestions) {
       button.addEventListener("click", () => {
         void ask(button.dataset.question!);

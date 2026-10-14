@@ -152,6 +152,16 @@ svg {
   transition: height 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
+.ask[data-state="idle"]:is(:focus-within, [data-touched]) {
+  height: max(45svh, 22rem);
+}
+
+@media (hover: hover) {
+  .ask[data-state="idle"]:hover {
+    height: max(45svh, 22rem);
+  }
+}
+
 .ask[data-state="active"] {
   height: max(90svh, 26rem);
 }
