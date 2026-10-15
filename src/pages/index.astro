@@ -41,7 +41,7 @@ const jsonLd = {
   "@type": "ProfilePage",
   "@id": pageUrl,
   url: pageUrl,
-  dateModified: resume.updated,
+  dateModified: updated.toISOString(),
   mainEntity: {
     "@type": "Person",
     "@id": `${pageUrl}#person`,
