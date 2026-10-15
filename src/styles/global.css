@@ -156,12 +156,6 @@ svg {
   height: max(45svh, 22rem);
 }
 
-@media (hover: hover) {
-  .ask[data-state="idle"]:hover {
-    height: max(45svh, 22rem);
-  }
-}
-
 .ask[data-state="active"] {
   height: max(90svh, 26rem);
 }
