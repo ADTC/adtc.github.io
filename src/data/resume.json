@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-07",
+  "updated": "2026-10-31",
   "name": "Arundas Thulasidas Chandraleeba",
   "headline": "Senior Full-Stack Software Engineer building web platforms with TypeScript, React, Astro and Python/Django on AWS, leading migrations and incident response, and directing AI coding agents with careful human review.",
   "links": [
@@ -17,6 +17,11 @@
       "label": "StackOverflow",
       "text": "stackoverflow.com/users/1134080/adtc",
       "url": "https://stackoverflow.com/users/1134080/adtc"
+    },
+    {
+      "label": "Toptal",
+      "text": "toptal.com/developers/resume/arundas-t-c#Br1WyV",
+      "url": "https://www.toptal.com/developers/resume/arundas-t-c#Br1WyV"
     },
     {
       "label": "Blog",
@@ -358,6 +363,7 @@
     "English (Native or Bilingual)"
   ],
   "certifications": [
+    "Part of the world's Top 3% Talent (Vetted by Toptal)",
     "Dynamic Leadership Path Completion (Toastmasters International)",
     "AI Product Management (Duke University)",
     "Managing Machine Learning Projects (Duke University)",
